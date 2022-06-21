@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Lap Store</title>
+
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
+	{{!-- icons --}}
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+		integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="manifest" crossorigin="use-credentials" href="/manifest.webmanifest">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+	<!--
+		CSS
+		============================================= -->
+	<link rel="stylesheet" href="/css/linearicons.css">
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/themify-icons.css">
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link rel="stylesheet" href="/css/owl.carousel.css">
+	<link rel="stylesheet" href="/css/nice-select.css">
+	<link rel="stylesheet" href="/css/nouislider.min.css">
+	<link rel="stylesheet" href="/css/ion.rangeSlider.css" />
+	<link rel="stylesheet" href="/css/ion.rangeSlider.skinFlat.css" />
+	<link rel="stylesheet" href="/css/magnific-popup.css">
+	<link rel="stylesheet" href="/css/main.css">
+
+	{{!-- for admin panel --}}
+	
+	<link href="/vendor1/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link
+		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+		rel="stylesheet">
+
+	<!-- Custom styles for this template-->
+	<link href="/css1/sb-admin-2.min.css" rel="stylesheet">
+
+
+	<!-- Font Awesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+
+	<!-- MDB -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
+
+	<!--Sweet Alert Codes-->
+	<!--JQuery CDN-->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<!--Sweet Alert CDN-->
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+</head>
+
+<body id="page-top">
+	
+
+<header class="header_area sticky-header">
+		<div class="main_menu">
+			<nav class="navbar navbar-expand-lg navbar-light main_box">
+				<div class="container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					{{!-- <a class="navbar-brand logo_h" href="index.html"><img src="/img/logo7.jpg" alt=""></a> --}}
+					<a style="text-decoration:none" href="/"><h2><span style="color:rgb(247, 106, 6)">Lap </span><span style="color:rgb(42, 42, 133)">Store</span></h2></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+						<ul class="nav navbar-nav menu_nav ml-auto">
+							<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+							<li class="nav-item "><a class="nav-link" href="/shop">Shop</a></li>
+							
+							<li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+
+             {{#if user}}
+              <li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false">{{user.name}}</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
+									<li class="nav-item"><a class="nav-link" href="/user-logout">Logout</a></li>
+									
+								</ul>
+							</li>
+
+              <li class="nav-item"><a class="nav-link" href="/cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+  <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+</svg><span class="badge badge-danger" id="cartCount">{{cartCount}}</span>
+</a></li>
+
+<li class="nav-item"><a class="nav-link" href="/wishlist"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+</svg><span class="badge badge-danger" id="wishCount">{{wishlistCount}}</span></a></li>
+              {{else}}
+              
+
+
+              <li class="nav-item"><a class="nav-link" href="/login"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+  <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+</svg></a></li>
+
+<li class="nav-item"><a class="nav-link" href="/login"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+  <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+</svg>
+</a></li>
+
+<li class="nav-item"><a class="nav-link" href="/login"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+</svg></a></li>
+               {{/if}}
+                
+                
+
+
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							{{!-- <li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li> --}}
+							<li class="nav-item">
+								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+							</li>
+              {{!-- <li class="nav-item">
+								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+							</li> --}}
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<div class="search_input" id="search_input_box">
+			<div class="container">
+				<form class="d-flex justify-content-between" action="/search" method="post">
+					<input type="text" class="form-control" id="search_input" placeholder="Search Here" name="key">
+					<button type="submit" class="btn btn-primary"></button>
+					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+				</form>
+			</div>
+		</div>
+	</header>
+
+	<div id="wrapper " class="pt-5">
+
+		<div class="container-fluid pt-5">
+
+			<div class="card shadow mb-4 pt">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary"><span style="color:orange"> All Orders </span>
+					</h6>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+							<thead>
+								<tr>
+									<th scope="col">Order ID & Date</th>
+
+									<th scope="col">User</th>
+
+									<th scope="col">Total</th>
+									<th scope="col">Payment</th>
+
+									<th scope="col">Details</th>
+
+
+								</tr>
+							</thead>
+							<tbody>
+								{{#each orders}}
+								<tr>
+
+									<td scope="row">
+										<div><span style="font-weight: bold;">Time :</span>
+											{{this.date}} </div>
+										<br>
+										<div><span style="font-weight: bold;">Time :</span>Date :{{this.date}}</div>
+										<br>
+										<div><span style="font-weight: bold;">Order ID :</span>{{this._id}}</div>
+									</td>
+
+									<td>
+
+										<div><span style="font-weight: bold;">Address
+												:</span>{{this.deliveryDetails.house}} </div>
+										<br>
+										<div><span style="font-weight: bold;">PIN
+												:</span>{{this.deliveryDetails.pincode}} </div>
+										<br>
+										<div><span style="font-weight: bold;">Mobile
+												:</span>{{this.deliveryDetails.mobile}}</div>
+									</td>
+									<td>
+										<div><span style="font-weight: bold;">total Amount
+												Paid:Rs</span>{{this.totalAmountPaid}}</div>
+										<br>
+										<div><span style="font-weight: bold;">total Amount Paid Refunded :
+												Rs</span>{{this.amountToBeRefunded}}</div>
+									</td>
+
+									<td>
+										<div><span style="font-weight: bold;">Method :</span>{{this.paymentMethod}}
+										</div>
+										<br>
+										<div><span style="font-weight: bold;">Payment Status: </span>{{this.status}}
+										</div>
+									</td>
+
+                                  
+									<td><a href="/viewOrderProducts/{{this._id}}" class="btn primary-btn">Details</a>
+									</td>
+									
+
+									
+
+
+
+								</tr>
+								{{/each}}
+
+							</tbody>
+
+
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	</div>
+	</div>
+
+	<footer class="footer-area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6>Contact Us</h6>
+						<p>
+							<span style="color:darkgoldenrod">azeeztp2020@gmail.com</span>
+							
+							
+							{{!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
+							magna aliqua. --}}
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-6  col-md-6 col-sm-6 float-end">
+
+					<div class="single-footer-widget">
+						<h6>About Us</h6>
+						<p>
+							<span style="color:darkgoldenrod">Lapstore
+							The Complete lapstore<br></span>
+							
+						
+						</p>
+					</div>
+					
+			 </div>
+			
+		</div>
+		</div>
+	</footer>
+
+
+	</script>
+
+	<script src="/js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+		integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+		crossorigin="anonymous"></script>
+	<script src="/js/vendor/bootstrap.min.js"></script>
+	<script src="/js/jquery.ajaxchimp.min.js"></script>
+	<script src="/js/jquery.nice-select.min.js"></script>
+	<script src="/js/jquery.sticky.js"></script>
+	<script src="/js/nouislider.min.js"></script>
+	<script src="/js/countdown.js"></script>
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
+	<!--gmaps Js-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+	<script src="/js/gmaps.min.js"></script>
+	<script src="/js/main.js"></script>
+
+	{{!-- validation --}}
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+
+	{{!-- for admin panel template --}}
+	
+	<script src="/vendor1/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="/js1/sb-admin-2.min.js"></script>
+
+	<!-- Page level plugins -->
+	<script src="/vendor1/chart.js/Chart.min.js"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="/js1/demo/chart-area-demo.js"></script>
+	<script src="/js1/demo/chart-pie-demo.js"></script>
+	<script src="/vendor1/datatables/jquery.dataTables.min.js"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="/js1/demo/datatables-demo.js"></script>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+	<!-- MDB -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
+
+
+</body>
+
+</html>

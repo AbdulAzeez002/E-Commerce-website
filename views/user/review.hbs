@@ -1,0 +1,54 @@
+<section class="pt-5 px-5">
+<div class="container px-5 pt-5 pb-5">
+    <div class="col-lg-12 pt-5">
+        <div class="pl-5">
+        <div class="review_box">
+            <h4>Add a Review</h4>
+            {{!-- <p>Your Rating:</p>
+            <ul class="list">
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+            </ul>
+            <p>Outstanding</p> --}}
+            <form class="row contact_form" action="/review" method="post" id="contactForm">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Full name"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Full name'" required>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email Address"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" required>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="number" name="rating" placeholder="Rating Out of 5"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Rating Out of 5'" required>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <textarea class="form-control" name="review" id="message" rows="1" placeholder="Review"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Review'" required></textarea></textarea>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" name="proId" value="{{id}}" hidden>
+                    </div>
+                </div>
+                <div class="col-md-12 text-right">
+                    <button type="submit" value="submit" class="primary-btn">Submit Now</button>
+                </div>
+            </form>
+        </div>
+        </div>
+        </div>
+    </div>
+</section>

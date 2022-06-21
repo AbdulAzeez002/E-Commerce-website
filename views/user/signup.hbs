@@ -1,0 +1,129 @@
+<style>
+    .err {
+        color: red;
+    }
+</style>
+
+<!--================Login Box Area =================-->
+<section class="login_box_area section_gap ">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="login_box_img">
+                    <img class="img-fluid" src="img/login.jpg" alt="">
+                    <div class="hover">
+                        <h4>Already have an Account? </h4>
+                        <a class="primary-btn" href="/login">Please Login</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="login_form_inner">
+                    <h3>Signup in to enter</h3>
+
+                    <form class="row login_form" action="/signup" method="post" id="signup-form">
+
+                        <p style="color: red;font-style: italic;font-weight: 500;font-size: larger;">{{err}}</p>
+
+
+                        <div class="col-md-12 form-group">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name"
+                                required="true" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Email"
+                                required="true" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input type="text" class="form-control" id="mobile" name="mobile"
+                                placeholder="Mobile Number" required="true" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Mobile'">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input type="text" class="form-control" id="password" name="password" placeholder="Password"
+                                required="true" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input type="text" class="form-control" id="password2" name="newpassword"
+                                placeholder="Confirm Password" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Confirm Password'">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <button type="submit" value="submit" class="primary-btn">SIGN UP</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $("#signup-form").validate({
+            errorClass: "err",
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 4,
+                    maxlength: 15,
+                    namevalidation: true
+                },
+
+                mobile: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 15
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+
+                password: {
+                    required: true,
+                    minlength: 5,
+
+
+                },
+                newpassword: {
+                    required: true,
+                    equalTo: "#password"
+                }
+            },
+            messages: {
+                name: {
+                    required: "Please enter your name",
+                    minlength: "At least 4 characters required",
+                    maxlength: "Maximum 15 characters are allowed"
+                },
+
+                mobile: {
+                    required: "Please enter your phone number",
+                    minlength: "Enter 10 numbers",
+                    maxlength: "Number should be less than or equal to 15 numbers"
+                },
+                email: {
+                    required: "Please enter your email id",
+                    email: "Enter a valid email"
+                },
+                //  password:"Please enter your password",
+                newpassword: {
+                    required: "confirm password",
+                    equalTo: "Password doesn't matches"
+                }
+            }
+        })
+        $.validator.addMethod("namevalidation", function (value, element) {
+            return /^[A-Za-z]+$/.test(value);
+        },
+            "Sorry,only alphabets are allowed"
+        );
+
+
+
+    })
+
+
+</script>

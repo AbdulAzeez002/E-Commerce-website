@@ -1,0 +1,136 @@
+<section class="order_details  pt-5">
+    <div class="container pt-5">
+        <div class="pt-5">
+
+        </div>
+        <div class="pt-5">
+
+        </div>
+        <h3 class="title_confirmation">Thank you <span style="color:coral">{{orderDetails.deliveryDetails.FirstName}}  {{orderDetails.deliveryDetails.lastName}}. </span> Your order has been received.</h3>
+        <div class="row order_d_inner">
+            <div class="col-lg-4">
+                <div class="details_item">
+                    <h4>Order Info</h4>
+                    <ul class="list">
+                        <li><a href="#"><span>Order number</span> : {{orderDetails._id}}</a></li>
+                        <li><a href="#"><span>Date</span> : {{orderDetails.date}}</a></li>
+                        <li><a href="#"><span>Total</span> : ₹{{orderDetails.totalAmountPaid}}</a></li>
+                        <li><a href="#"><span>Payment method</span> : {{orderDetails.paymentMethod}} </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="details_item">
+                    <h4>Billing Address</h4>
+                    <ul class="list">
+                        <li><a href="#"><span>Street</span> : {{orderDetails.deliveryDetails.localPlace}}</a></li>
+                        <li><a href="#"><span>Town</span> : {{orderDetails.deliveryDetails.town}}</a></li>
+                        <li><a href="#"><span>District</span> : {{orderDetails.deliveryDetails.district}}</a></li>
+                        <li><a href="#"><span>State</span> :{{orderDetails.deliveryDetails.state}}</a></li>
+                        <li><a href="#"><span>Country</span> :India</a></li>
+                        <li><a href="#"><span>Postcode </span> : {{orderDetails.deliveryDetails.pincode}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="details_item">
+                    <h4>Shipping Address</h4>
+                    <ul class="list">
+                        <li><a href="#"><span>Street</span> : {{orderDetails.deliveryDetails.localPlace}}</a></li>
+                        <li><a href="#"><span>Town</span> : {{orderDetails.deliveryDetails.town}}</a></li>
+                        <li><a href="#"><span>District</span> : {{orderDetails.deliveryDetails.district}}</a></li>
+                        <li><a href="#"><span>State</span> :{{orderDetails.deliveryDetails.state}}</a></li>
+                        <li><a href="#"><span>Country</span> :India</a></li>
+                        <li><a href="#"><span>Postcode </span> : {{orderDetails.deliveryDetails.pincode}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="order_details_table">
+            <h2>Order Details</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each order}}
+                        <tr>
+                            <td>
+                                <p>{{this.products.productName}}</p>
+                            </td>
+                            <td>
+                                <h5>x {{this.quantity}}</h5>
+                            </td>
+                            <td>
+                                <p>₹{{this.products.price}}</p>
+                            </td>
+                        </tr>
+                        {{/each}}
+
+                        <tr>
+                            <td>
+                                <h4>Subtotal</h4>
+                            </td>
+                            <td>
+                                <h5></h5>
+                            </td>
+                            <td>
+                                <p>₹{{orderDetails.subtotal}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>Coupon Discount</h4>
+                            </td>
+                            <td>
+                                <h5></h5>
+                            </td>
+                            <td>
+                                <p> {{orderDetails.couponDiscount}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>Total After Coupon</h4>
+                            </td>
+                            <td>
+                                <h5></h5>
+                            </td>
+                            <td>
+                                <p> ₹{{orderDetails.totalAmountWithoutShipping}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>Shipping Charge</h4>
+                            </td>
+                            <td>
+                                <h5></h5>
+                            </td>
+                            <td>
+                                <p> ₹ 40</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>Total</h4>
+                            </td>
+                            <td>
+                                <h5></h5>
+                            </td>
+                            <td>
+                                <p>₹{{orderDetails.totalAmountPaid}}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

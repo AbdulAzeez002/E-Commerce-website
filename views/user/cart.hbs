@@ -1,0 +1,201 @@
+<section class="cart_area">
+  <div class="container pt-5">
+    <div class="cart_inner">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+
+              <th scope="col">Product</th>
+              <th scope="col">Name</th>
+              <th scope="col">Color</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total</th>
+              <th scope="col">Remove</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            {{#each products}}
+            <tr>
+
+              <td>
+                <div class="media">
+                  <div class="d-flex">
+                    <img style="height:100px;width:100px" src="/uploads/{{this.products.image.[0].image1}}" alt="">
+                  </div>
+              </td>
+              <td>
+                <div class="media-body">
+                  <p>{{this.products.productName}}</p>
+                </div>
+      </div>
+      </td>
+      <td>
+        <h5>{{this.products.color}}</h5>
+      </td>
+      <td>
+        <h5>₹{{this.products.price}}</h5>
+      </td>
+
+      <td>
+        <div class="product_count">
+          <input type="text" id="{{this.products._id}}" value="{{this.quantity}}" class="input-text qty">
+          <button class="increase items-count"
+            onclick="changeQuantity('{{this._id}}','{{this.products._id}}','{{../user._id}}',1,'{{this.products.price}}','{{this.products.productName}}')"><i
+              class="lnr lnr-chevron-up"></i></button>
+          <button class="reduced items-count"
+            onclick="changeQuantity('{{this._id}}','{{this.products._id}}','{{../user._id}}',-1,'{{this.products.price}}','{{this.products.productName}}')"><i
+              class="lnr lnr-chevron-down"></i></button>
+
+        </div>
+      </td>
+
+      <td>
+
+        <h5><span>₹ </span><span id="{{this.products.productName}}">{{this.subtotal}}</h5></span>
+
+      </td>
+
+      <td>
+        <button onclick="removeProduct('{{this._id}}','{{this.products._id}}')"
+          class="btn btn-danger delete-button">REMOVE</button>
+      </td>
+      </tr>
+      {{/each}}
+      <tr>
+        <td></td>
+
+        <td></td>
+        <td></td>
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+        <td>
+          <h4>Subtotal</h4>
+        </td>
+        <td>
+          <h4><span style="color:orangered" id="total">₹{{subTotal}}</span></h4>
+        </td>
+      </tr>
+      </tbody>
+      </table>
+
+      <div class="checkout_btn_inner float-right">
+        <a class="primary-btn" href="/">Continue Shopping</a>
+        <a class="primary-btn proceed-button" href="/checkout/{{subTotal}}">Proceed to checkout</a>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<script>
+  function changeQuantity(cartId, proId, userId, count, price, name) {
+
+    let quantity = parseInt(document.getElementById(proId).value)
+
+    $.ajax({
+      url: "/changeCartQuantity",
+      data: {
+        user: userId,
+        cart: cartId,
+        product: proId,
+        count: count,
+        quantity: quantity,
+        price: price
+
+      },
+
+      method: "post",
+      success: (Response) => {
+
+        if (Response.removeProduct) {
+
+           Swal.fire({
+            title: 'product removed from cart',
+            icon: 'warning',
+            showCancelButton: false,
+           
+            confirmButtonText: 'Ok'
+        }).then((result) => {
+            if (result.isConfirmed) {
+               
+              location.href = self.attr('href');
+            }
+        })
+
+         location.reload()
+        }
+        else if(Response.error){
+
+       Swal.fire({
+            title: 'Out of Stock',
+            icon: 'warning',
+            showCancelButton: false,
+           
+            confirmButtonText: 'Ok'
+        }).then((result) => {
+            if (result.isConfirmed) {
+               
+              location.href = self.attr('href');
+            }
+        })
+         
+        }
+        else {
+
+          document.getElementById(proId).value = quantity + count
+          document.getElementById(name).innerHTML = (quantity + count) * (price)
+          document.getElementById('total').innerHTML = "₹" + Response.total
+
+
+        }
+
+      }
+    })
+  }
+
+</script>
+
+<script>
+  function removeProduct(cartId, proId) {
+
+    $.ajax({
+      url: "/removeProduct",
+      data: {
+        cart: cartId,
+        product: proId,
+
+      },
+
+      method: "post",
+      success: (Response) => {
+
+        if (Response.removeProduct) {
+
+          Swal.fire({
+            title: 'product removed from cart',
+            icon: 'warning',
+            showCancelButton: false,
+           
+            confirmButtonText: 'Ok'
+        }).then((result) => {
+            if (result.isConfirmed) {
+               
+              location.href = self.attr('href');
+            }
+        })
+          location.reload()
+        }
+
+      }
+    })
+  }
+
+</script>

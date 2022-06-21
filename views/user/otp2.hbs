@@ -1,0 +1,33 @@
+<section class="vh-90 pt-5" style="background-color: #ffffff; ">
+  <div class="pt-5">
+
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+
+              <h3 class="mb-5">Enter OTP</h3>
+              <span class="mobile-text">Enter the code we send on your mobile phone <b class="text-danger">+91
+                  {{mobile}}</b></span>
+              <form action="/passOtp" method="post">
+
+                {{#if otpErr2}}
+                <p style="color:orangered">{{otpErr2}}</p>
+                {{/if}}
+                <div class="form-outline mb-4">
+                  <input type="number" id="typeEmailX-2" class="form-control form-control-lg" name="otp" />
+                  <label class="form-label" for="typeEmailX-2">Enter OTP</label>
+                </div>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

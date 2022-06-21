@@ -1,0 +1,295 @@
+<!--================Single Product Area =================-->
+<div class="product_image_area">
+	<div class="container pt-5">
+		<div class="row s_product_inner">
+			<div class="col-lg-6">
+				<div class="s_Product_carousel">
+					<div class="single-prd-item">
+						<img class="img-fluid" src="/uploads/{{product.image.[0].image1}}" alt="">
+					</div>
+					<div class="single-prd-item">
+						<img class="img-fluid" src="/uploads/{{product.image.[1].image2}}" alt="">
+					</div>
+					<div class="single-prd-item">
+						<img class="img-fluid" src="/uploads/{{product.image.[2].image3}}" alt="">
+					</div>
+					<div class="single-prd-item">
+						<img class="img-fluid" src="/uploads/{{product.image.[3].image4}}" alt="">
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-5 offset-lg-1">
+				<div class="s_product_text">
+					<h3>{{product.productName}}</h3>
+					<h5 style="color:#ff7400">Rs {{product.price}} <del style="color:#ffc018;font-size:1rem">
+							{{product.MRP}} </del></h5>
+					<ul class="list">
+
+						<li><a href="#"><span style="color:orangered">{{product.discount}} %off</span></a></li>
+					</ul>
+
+
+					<ul class="list">
+						<li><a class="active" href="#"><span>Category</span> :{{product.category}}</a></li>
+						<li><a href="#"><span>Availibility</span> : In Stock</a></li>
+					</ul>
+					<p>{{product.description1}}</p>
+
+					{{#if user}}
+					<div class="card_area d-flex align-items-center">
+						<button class="btn primary-btn" onclick="addToCarts('{{product._id}}','{{user._id}}')">Add to
+							Cart</button>
+
+						<button class="icon_btn" style="border-color:transparent"
+							onclick="addToWishlist('{{product._id}}')"><i class="lnr lnr lnr-heart"></i></button>
+					</div>
+					{{else}}
+
+					<div class="card_area d-flex align-items-center">
+						<a class="primary-btn" href="/login">Add to Cart</a>
+
+						<a class="icon_btn" href="/login"><i class="lnr lnr lnr-heart"></i></a>
+					</div>
+
+					{{/if}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--================End Single Product Area =================-->
+
+<!--================Product Description Area =================-->
+<section class="product_description_area">
+	<div class="container">
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+					aria-selected="true">Description</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+					aria-controls="profile" aria-selected="false">Specification</a>
+			</li>
+			
+			<li class="nav-item">
+				<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab"
+					aria-controls="review" aria-selected="false">Reviews</a>
+			</li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+				<p>{{product.description2}}</p>
+			</div>
+			<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+				<div class="table-responsive">
+					<table class="table">
+						<tbody>
+							<tr>
+								<td>
+									<h5>In the Box</h5>
+								</td>
+								<td>
+									<h5>{{product.inBox}}</h5>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h5>Color</h5>
+								</td>
+								<td>
+									<h5>{{product.color}}</h5>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h5>Size</h5>
+								</td>
+								<td>
+									<h5>{{product.screenSize}}</h5>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h5>Weight</h5>
+								</td>
+								<td>
+									<h5>{{product.weight}}</h5>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h5>Suitable For</h5>
+								</td>
+								<td>
+									<h5>{{product.category}}</h5>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h5>Battery Backup</h5>
+								</td>
+								<td>
+									<h5>{{product.battery}}</h5>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h5>Storage Type</h5>
+								</td>
+								<td>
+									<h5>{{product.storageType}}</h5>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h5>Storage Capacity</h5>
+								</td>
+								<td>
+									<h5>{{product.storageCapacity}}</h5>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h5>RAM</h5>
+								</td>
+								<td>
+									<h5>{{product.ram}}</h5>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h5>Warranty</h5>
+								</td>
+								<td>
+									<h5>{{product.warranty}}</h5>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h5>Processor Brand</h5>
+								</td>
+								<td>
+									<h5>{{product.processorType}}</h5>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h5>Processor Name</h5>
+								</td>
+								<td>
+									<h5>{{product.processorName}}</h5>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+			<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+				<div class="row">
+					<div class="col-lg-12">
+						
+						<div class="review_list">
+							{{#each product.reviews}}
+							<div class="review_item">
+								<div class="media">
+									<div class="d-flex">
+										<img style="height:40px" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+									</div>
+									<div class="media-body">
+										<h4>{{this.name}}</h4>
+										<P><span style="font-weight:bold">Rating:</span> {{this.rating}}  out of 5</P>
+										{{!-- <i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i> --}}
+									</div>
+								</div>
+								<p>{{this.review}}</p>
+							</div>
+							<br>
+							<br>
+
+							{{/each}}
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--================End Product Description Area =================-->
+
+<!-- Start related-product Area -->
+
+<!-- End related-product Area -->
+
+<script>
+	function addToWishlist(proId) {
+		alert('hyy')
+		$.ajax({
+			url: "/AddToWishlist/" + proId,
+			methode: "get",
+			success: (Response) => {
+
+
+
+				if (Response.modifiedCount == 1) {
+
+
+
+					alert(Response)
+					//location.reload()
+					let count = $('#wishCount').html()
+					count = parseInt(count) + 1
+					$("#wishCount").html(parseInt(count))
+
+
+				}
+			}
+		})
+
+
+
+	}
+	function addToCarts(proId, userId) {
+
+		alert(userId)
+		alert(proId)
+
+		$.ajax({
+			url: "/AddToCarts",
+			method: "post",
+			data: {
+				product: proId,
+				userId: userId
+			},
+			success: (Response) => {
+
+
+
+				if (Response.modifiedCount == 1) {
+
+					alert('added to cart')
+
+					alert(Response)
+					//location.reload()
+					let count = $('#cartCount').html()
+					count = parseInt(count) + 1
+					$("#cartCount").html(parseInt(count))
+
+				}
+			}
+		})
+
+
+
+	}
+
+
+</script>

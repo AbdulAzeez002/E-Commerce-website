@@ -1,0 +1,107 @@
+<section class="cart_area">
+  <div class="container pt-5">
+    <div class="cart_inner">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Name</th>
+              <th scope="col">Color</th>
+              <th scope="col">Price</th>
+
+              <th scope="col">Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each products}}
+            <tr>
+
+              <td>
+                <div class="media">
+                  <div class="d-flex">
+                    <img src="img/cart.jpg" alt="">
+                  </div>
+              </td>
+              <td>
+                <div class="media-body">
+                  <p>{{this.products.productName}}</p>
+                </div>
+      </div>
+      </td>
+      <td>
+        <h5>{{this.products.color}}</h5>
+      </td>
+      <td>
+        <h5>₹{{this.products.price}}</h5>
+      </td>
+
+
+      <td>
+        <button onclick="addToCart('{{this._id}}','{{this.products._id}}','{{../user._id}}')"
+          class="btn btn-primary delete-button">ADD TO CART</button>
+
+
+
+        <button class="btn btn-danger" onclick="deleteProd('{{this._id}}','{{this.products._id}}')">REMOVE</button>
+      </td>
+      </tr>
+      {{/each}}
+
+
+      </tbody>
+      </table>
+      <div class="mr-5">
+        <div class="checkout_btn_inner float-right mr-5">
+          <a class="primary-btn" href="/">View More Products</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+</section>
+
+<script>
+  function deleteProd(wishId, proId) {
+    $.ajax({
+      url: '/delete-wishlist-product',
+      data: {
+        wishlist: wishId,
+        product: proId,
+
+      },
+      method: 'post',
+      success: (response) => {
+        if (response) {
+          alert('Product Removed from your Wish list')
+          location.reload()
+        }
+      }
+    })
+  }
+
+</script>
+<script>
+  function addToCart(wishId, proId, userId) {
+    $.ajax({
+      url: '/addToCart2',
+      data: {
+        wishlist: wishId,
+        product: proId,
+        user: userId
+      },
+      method: 'post',
+      success: (Response) => {
+
+        if (Response.removeProduct) {
+
+          alert('product removed from wishlist')
+          location.reload()
+        }
+
+
+      }
+    })
+  }
+</script>

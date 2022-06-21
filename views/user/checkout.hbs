@@ -1,0 +1,463 @@
+<section class="checkout_area section_gap">
+  <div class="container pt-5">
+    <div class="returning_customer mb-4 mt-4 ">
+      <div class="check_title">
+        <h5 style="color:#ff9f20">
+          please select a address
+        </h5>
+      </div>
+    </div>
+    <div class=" container-fluid content-row  mb-4 ">
+      <div class="row mb-4 mt-4 ">
+        {{#each Addresses}}
+
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+
+          <div class="card rounded h-100 border text-center">
+            <h3></h3>
+            <p style="color:black">{{this.fname}} {{this.lname}}, {{this.house}}, {{this.localplace}}, {{this.town}},
+              {{this.district}}, {{this.state}}, Pincode: {{this.pincode}}</p>
+            <P style="color:black">Email: {{this.email}}</P>
+            <p style="color:black">Mobile: {{this.mobile}}</p>
+            <button style="background-color:
+
+#e5ecee" class="btn "
+              onclick="autofill('{{this.fname}}','{{this.lname}}','{{this.mobile}}','{{this.email}}','{{this.house}}','{{this.localplace}}','{{this.town}}','{{this.district}}','{{this.state}}','{{this.pincode}}')">use
+              this Address</button>
+          </div>
+
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="billing_details">
+      <div class="row">
+        <div class="col-lg-8">
+          <h5 style="color:
+#ff9f20">
+            or fill the form Below
+
+          </h5>
+          <form class="row contact_form" action="#" id="checkoutForm" method="post">
+            <div class="col-md-6 form-group p_star">
+
+              <input type="text" class="form-control" id="fname" name="fname" required placeholder="Full name" />
+
+              <input type="text" class="form-control" id="#" name="userId" required value="{{user._id}}" hidden />
+            </div>
+            <div class="col-md-6 form-group p_star">
+              <input type="text" class="form-control" id="lname" name="lname" required placeholder="Last name" />
+            </div>
+            <div class="col-md-6 form-group p_star">
+              <input type="text" class="form-control" id="mobile" name="number" required placeholder="Phone number" />
+            </div>
+            <div class="col-md-6 form-group p_star">
+              <input type="text" class="form-control" id="email" name="email" required placeholder="Email Address" />
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input type="text" class="form-control" id="house" name="house" required
+                placeholder="House Name or Company name" />
+            </div>
+            <div class="col-md-12 form-group p_star">
+              <input type="text" class="form-control" id="localplace" name="localplace" required
+                placeholder="Locality" />
+            </div>
+            <div class="col-md-12 form-group p_star">
+              <input type="text" class="form-control" id="town" name="town" placeholder="Town/City" required />
+            </div>
+            <div class="col-md-12 form-group p_star">
+
+              <input type="text" class="form-control" id="district" name="district" required placeholder="District" />
+            </div>
+            <div class="col-md-12 form-group">
+              <input type="text" class="form-control" id="state" name="state" required placeholder="State" />
+            </div>
+            <div class="col-md-12 form-group">
+              <input type="text" class="form-control" id="pincode" name="pincode" required placeholder="Postcode/ZIP"
+                value="" />
+            </div>
+            <div class="col-md-12 form-group">
+              <input type="number" class="form-control" id="subTotal" name="subTotal" value="{{total}}" hidden />
+            </div>
+            <div class="col-md-12 form-group">
+              <input type="text" class="form-control" id="discountedPrice" name="discountedPrice"
+                value="No Coupon Applied" hidden />
+            </div>
+            <div class="col-md-12 form-group">
+              <input type="number" class="form-control" id="MainTotal" name="mainTotal" value="{{total}}" hidden />
+            </div>
+            <div class="col-md-12 form-group">
+              <input type="text" class="form-control" id="couponName" name="couponName" hidden />
+            </div>
+            <div class="col-md-12 form-group">
+              <input type="text" class="form-control" id="amountToBePaid" name="amountToBePaid" value="{{grandTotal}}"
+                hidden />
+            </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="order_box">
+            <div class="order-details">
+              <h2>Your Order</h2>
+              <ul class="list">
+                <li>
+                  <a style="color:darkmagenta" href="#">Products
+                    <span>Total</span>
+                  </a>
+                </li>
+                {{#each products}}
+
+                <li>
+                  <a href="#">{{this.products.productName}}
+                    <span class="middle">x{{this.quantity}} </span>
+
+                  </a>
+                </li>
+
+                {{/each}}
+
+              </ul>
+              <ul class="list list_2">
+                <li>
+                  <a href="#">Subtotal
+                    <span>₹ {{total}}</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">Coupon Offer
+                    <span style="color:rgb(35, 100, 35)" id="discount">No Coupon Applied</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <p>Total
+                      <span id="totalWithCoupon"> ₹ {{total}}</span>
+                    </p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">Shipping
+                    <span style="color:darkred"> ₹ 40</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">Amount To Be Paid
+                    <span style="color:darkred" id="paidAmount">₹ {{grandTotal}} </span>
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+            <div class="mt-5 mb-5">
+
+
+              <button type="button" class="btn btn-link float-end" data-toggle="modal"
+                data-target="#exampleModalCenter">
+                Get New Coupon
+              </button>
+              <p>Enter your coupon code if you have one.</p>
+
+              <input type="text" class="form-control" name="coupon" id="couponInput" autocapitalize="on" />
+              <input type="text" id="couponTotal" name="total" value="{{total}}" hidden>
+
+
+              <input type="text" id="code" name="Coupon_code" hidden>
+              <a id="couponBtn" onclick="couponApply()" class="btn bg-success text-white text-center  mt-2"
+                style="width: 100%;text-decoration: none;">Apply
+                Coupon</a>
+            </div>
+
+            <!-- Error handling of coupons  -->
+            <div class="mt-2">
+              <div class="alert alert-danger" style="display: none;" id="couponUsed" role="alert">
+                This Coupon was redeemed
+              </div>
+              <div class="alert alert-danger" style="display: none;" id="couponInvalid" role="alert">
+                This Coupon is
+                invalid
+              </div>
+              <div class="alert alert-success" style="display: none;" id="couponSuccess" role="alert">
+                Coupon Applied
+                Successfully
+              </div>
+              <div class="alert alert-warning" style="display: none;" id="couponExpired" role="alert">
+                Sorry!!! Your
+                Coupon has been Expired
+              </div>
+
+              <div class="alert alert-warning" style="display: none;" id="couponMaxLimit" role="alert">
+                Sorry!!! Your
+                Coupon Has Reached Maximum Limit
+              </div>
+            </div>
+
+            {{!-- modal management --}}
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+
+                  <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLongTitle">All Available Coupons</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+
+                  </div>
+                  {{#each coupon }}
+                  <div class="modal-body">
+                    <div class="row ">
+                      <div class="col-12 ">
+                        <input type="text" name="" id="{{this._id}}" value="{{this.coupon}}" hidden>
+
+                        <div class="card">
+                          <div class="card-body">
+                            <h1 class="card-title">{{this.coupon}}</h1>
+                            <p class="card-text">You Can get <span style="color:red"> {{this.offer}}%</span> Discount
+                              for this Coupon</p>
+                            <p>Expired on : {{this.expiry}}</p>
+                            <button type="button" onclick="copyFunction('{{this._id}}')"
+                              class="btn btn-primary copy-button">Copy</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {{/each}}
+                  <div class="modal-footer"></div>
+
+                </div>
+              </div>
+            </div>
+
+
+            <div>
+              <h6 style="color:orange"> Please Select a Payment Method</h6>
+              <div class="payment_item ">
+                <div class="radion_btn">
+                  <input type="radio" id="cod" name="paymentMethod" value="cod" required />
+                  <label for="cod">Cash on Delivery</label>
+                  <div class="check"></div>
+                </div>
+
+              </div>
+              <div class="payment_item ">
+                <div class="radion_btn">
+                  <input type="radio" id="razorpay" name="paymentMethod" value="online" />
+                  <label for="razorpay">RazorPay</label>
+                  <div class="check"></div>
+                </div>
+
+              </div>
+            </div>
+            <button class="btn primary-btn" type="submit">Proceed to Pay</button>
+          </div>
+        </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $("#checkoutForm").submit((e) => {
+    e.preventDefault()
+    $.ajax({
+      url: '/proceedToPay',
+      method: 'post',
+      data: $('#checkoutForm').serialize(),
+      success: (Response) => {
+        if (Response.codStatus) {
+          location.href = '/viewOrderDetails'
+        } else {
+          razorpayPayment(Response)
+        }
+      }
+
+    })
+  })
+  function razorpayPayment(order) {
+    var options = {
+      "key": 'rzp_test_QKNn8BnEMYrnGF', // Enter the Key ID generated from the Dashboard
+      "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": "E cart",
+      "description": "Test Transaction",
+      "image": "https://example.com/your_logo",
+      "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      "handler": function (response) {
+        //alert(response.razorpay_payment_id);
+        //alert(response.razorpay_order_id);
+        //alert(response.razorpay_signature)
+        verifyPayment(response, order)
+      },
+      "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+      },
+      "notes": {
+        "address": "Razorpay Corporate Office"
+      },
+      "theme": {
+        "color": "#3399cc"
+      }
+    };
+    var rzp1 = new Razorpay(options)
+    rzp1.open()
+  }
+  
+  function verifyPayment(payment, order) {
+    $.ajax({
+      url: '/verify-payment',
+      data: {
+        payment,
+        order
+      },
+      method: 'post',
+      success: (response) => {
+        if (response.status) {
+          location.href = '/viewOrderDetails'
+        } else {
+          alert('failed payment')
+        }
+      }
+    })
+  }
+</script>
+
+<script>
+
+  function autofill(fname, lname, mobile, email, house, localplace, town, district, state, pincode) {
+
+    document.getElementById('fname').value = fname
+    document.getElementById('lname').value = lname
+    document.getElementById('mobile').value = mobile
+    document.getElementById('email').value = email
+    document.getElementById('house').value = house
+    document.getElementById('localplace').value = localplace
+    document.getElementById('town').value = town
+    document.getElementById('district').value = district
+    document.getElementById('state').value = state
+    document.getElementById('pincode').value = pincode
+
+  }
+</script>
+</script>
+<!--Sweet Alert CDN-->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+
+  function copyFunction(couponId) {
+
+    var copyText = document.getElementById(couponId); copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
+
+    $(".copy-button").on("click", function (e) {
+      e.preventDefault();
+      var self = $(this);
+      console.log(self.data("title"));
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Coupon Copied ' + "'" + copyText.value + "'",
+        showConfirmButton: false,
+        timer: 2000
+      })
+    })
+  }
+</script>
+
+<script>
+  function couponApply() {
+
+    let couponCode = document.getElementById('couponInput').value
+    let couponTotal = document.getElementById('couponTotal').value
+    document.getElementById('couponName').value = couponCode
+
+    $.ajax({
+      url: '/couponApply',
+      data: {
+        coupon: couponCode,
+        total: couponTotal
+      },
+      method: 'post',
+      success: (response) => {
+        alert(response.couponSuccess)
+        if (response.couponSuccess) {
+          let oldTotal = parseInt(document.getElementById('couponTotal').value)
+
+          let discount = oldTotal - parseInt(response.total)
+
+          document.getElementById('couponInput').readOnly = true
+
+          document.getElementById('totalWithCoupon').innerHTML = '₹' + response.total
+          document.getElementById('discount').innerHTML = '₹' + discount
+          document.getElementById('paidAmount').innerHTML = '₹' + (parseInt(response.total) + 40)
+
+          document.getElementById('code').value = couponCode
+          document.getElementById('discountedPrice').value = discount
+          document.getElementById('MainTotal').value = response.total
+          document.getElementById('amountToBePaid').value = parseInt(response.total) + 40
+
+          $("#discountspan").html(parseInt(discount))
+          $('#discountspan').show()
+          $('#discountLabel').show()
+          $('#discounttd').show()
+          $('#newTotal').show()
+          $('#tdTotal').show()
+          $('#totalOriginal').show()
+
+          document.getElementById('grandTotal').innerHTML = '₹' + response.total
+          $('#couponSuccess').show()
+          $('#couponUsed').hide()
+          $('#couponInvalid').hide()
+          $('#couponExpired').hide()
+          $('#couponMaxLimit').hide()
+        }
+
+        if (response.couponUsed) {
+          $('#couponUsed').show()
+          $('#couponSuccess').hide()
+          $('#couponInvalid').hide()
+          $('#couponExpired').hide()
+          $('#discountspan').hide()
+          $('#discountLabel').hide()
+          $('#couponMaxLimit').hide()
+        }
+        if (response.invalidCoupon) {
+          $('#couponInvalid').show()
+          $('#couponSuccess').hide()
+          $('#couponUsed').hide()
+          $('#couponExpired').hide()
+          $('#discountspan').hide()
+          $('#discountLabel').hide()
+          $('#couponMaxLimit').hide()
+        }
+        if (response.couponExpired) {
+          $('#couponExpired').show()
+          $('#couponSuccess').hide()
+          $('#couponInvalid').hide()
+          $('#couponUsed').hide()
+          $('#discountspan').hide()
+          $('#discountLabel').hide()
+          $('#couponMaxLimit').hide()
+        }
+        if (response.couponMaxLimit) {
+          $('#couponMaxLimit').show()
+          $('#couponExpired').hide()
+          $('#couponSuccess').hide()
+          $('#couponInvalid').hide()
+          $('#couponUsed').hide()
+          $('#discountspan').hide()
+          $('#discountLabel').hide()
+        }
+      }
+    })
+  }
+</script>

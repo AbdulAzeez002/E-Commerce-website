@@ -1,0 +1,244 @@
+<!-- Default form register -->
+<div class="container mt-5 col-xl-6">
+    <form class="text-center border border-light p-5" action="/admin/addProduct" method="post"
+        enctype="multipart/form-data">
+
+        <p class="h4 mb-4">Add Prduct</p>
+
+        <div class="form-row mb-4">
+            <div class="col">
+                <!--  name -->
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Product Name"
+                    name="productName">
+            </div>
+            <div class="col">
+                <!-- brand name -->
+                <select class="form-control" id="exampleFormControlSelect1" name="brand">
+                    <option> Select Brand</option>
+                    {{#each brand}}
+                    <option>{{this.brandName}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+
+
+        <div class="form-row mb-4">
+            <div class="col">
+                <!-- brand name -->
+                <select class="form-control" id="exampleFormControlSelect1" name="processorType">
+                    <option> select Processor</option>
+                    <option>Intel </option>
+                    <option>Rayzon </option>
+                    {{!-- <option>Apple</option> --}}
+                    {{!-- <option>5</option> --}}
+                </select>
+
+            </div>
+            <div class="col">
+                <!--  name -->
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Processor Name"
+                    name="processorName">
+            </div>
+        </div>
+
+
+        <div class="form-row mb-4">
+            <div class="col">
+
+                {{!-- <label for="exampleFormControlSelect1">Example select</label> --}}
+                <select class="form-control" id="exampleFormControlSelect1" name="category">
+                    <option>Select Category</option>
+                    {{#each category}}
+                    <option>{{this.CategoryName}}</option>
+                    {{/each}}
+                    {{!-- <option>3</option>
+                    <option>4</option>
+                    <option>5</option> --}}
+                </select>
+            </div>
+            <div class="col">
+                <!-- price -->
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Screen Size"
+                    name="screenSize">
+            </div>
+        </div>
+
+
+
+
+
+        <div class="form-row mb-4">
+            <div class="col">
+
+                {{!-- <label for="exampleFormControlSelect1">Example select</label> --}}
+                <select class="form-control" id="exampleFormControlSelect1" name="storageType">
+                    <option>Storage Type</option>
+                    <option>SSD</option>
+                    <option>HDD</option>
+                    {{!-- <option>64 GB</option>
+                    <option>128 GB</option>
+                    <option>256 GB</option> --}}
+                </select>
+            </div>
+            <div class="col">
+                <!--  storage -->
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Storage Capacity"
+                    name="storageCapacity">
+            </div>
+        </div>
+
+        <div class="form-row mb-4">
+            <div class="col">
+
+                {{!-- <label for="exampleFormControlSelect1">Example select</label> --}}
+                <select class="form-control" id="exampleFormControlSelect1" name="ram">
+                    <option>Select Ram</option>
+
+                    <option>4 GB</option>
+                    <option>6 GB</option>
+                    <option>8 GB</option>
+                    <option>16 GB</option>
+                </select>
+            </div>
+            <div class="col">
+                <!--  name -->
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Weight"
+                    name="weight">
+            </div>
+        </div>
+
+
+
+        <div class="form-row mb-4">
+            <div class="col">
+                <!-- price -->
+                <input type="number" id="defaultRegisterFormFirstName" class="form-control" placeholder="MRP"
+                    name="MRP">
+            </div>
+            <div class="col">
+                <!-- Color -->
+                <input type="number" id="defaultRegisterFormLastName" class="form-control" placeholder="Price"
+                    name="price">
+            </div>
+        </div>
+
+        <div class="form-row mb-4">
+            <div class="col">
+
+                {{!-- <label for="exampleFormControlSelect1">Example select</label> --}}
+                <select class="form-control" id="exampleFormControlSelect1" name="operatingSystem">
+                    <option>Select Operating System Type</option>
+                    <option>Windows </option>
+                    <option>Mac </option>
+                    {{!-- <option>IOS </option> --}}
+                    {{!-- <option>4</option>
+                    <option>5</option> --}}
+                </select>
+            </div>
+            <div class="col">
+                <!-- sub category -->
+                <input type="text" id="defaultRegisterFormLastName" class="form-control"
+                    placeholder="operating System Name" name="operatingSystemName">
+            </div>
+        </div>
+
+
+        <div class="form-row mb-4">
+            <div class="col">
+
+                {{!-- <label for="exampleFormControlSelect1">Example select</label> --}}
+                <select class="form-control" id="exampleFormControlSelect1" name="warranty">
+                    <option>Warranty</option>
+                    <option>1 year </option>
+                    <option>2 year </option>
+                    {{!-- <option>4</option>
+                    <option>5</option> --}}
+                </select>
+            </div>
+            <div class="col">
+                <!-- sub category -->
+                <input type="number" id="defaultRegisterFormLastName" class="form-control" placeholder="Quantity"
+                    name="stock">
+            </div>
+        </div>
+
+
+        <div class="form-row mb-4">
+            <div class="col">
+                <!-- price -->
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control"
+                    placeholder="Items in Sales Package" name="inBox">
+            </div>
+            <div class="col">
+                <!-- Color -->
+                <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Color"
+                    name="color">
+            </div>
+        </div>
+
+        <div class="form-row mb-4">
+            <div class="col">
+                <!-- price -->
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Suitable For"
+                    name="suitable">
+            </div>
+            <div class="col">
+
+                {{!-- <label for="exampleFormControlSelect1">Example select</label> --}}
+                <select class="form-control" id="exampleFormControlSelect1" name="fingerPrintSesnsor">
+                    <option>Finger Print Sensor</option>
+                    <option>Yes </option>
+                    <option>No </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row mb-4">
+            <div class="col">
+                <!-- price -->
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Battery"
+                    name="battery">
+            </div>
+            <div class="col">
+                <!-- price -->
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Discount percent"
+                    name="discount">
+            </div>
+
+        </div>
+
+        <!-- description -->
+        <textarea type="text" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="Short Description"
+            name="description1"></textarea>
+        <textarea type="text" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="Description"
+            name="description2"></textarea>
+        <textarea type="text" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="Additional Features"
+            name="additionalFeatures"></textarea>
+
+        <div class="form-row mb-4">
+            <div class="col">
+                <!-- price -->
+                <input type="file" id="defaultRegisterFormFirstName" class="form-control" placeholder="image"
+                    name="image1">
+            </div>
+            <div class="col">
+                <!-- Color -->
+                <input type="file" id="defaultRegisterFormLastName" class="form-control" placeholder="image"
+                    name="image2">
+            </div>
+        </div>
+        <div class="form-row mb-4">
+            <div class="col">
+                <!-- price -->
+                <input type="file" id="defaultRegisterFormFirstName" class="form-control" placeholder="image"
+                    name="image3">
+            </div>
+            <div class="col">
+                <!-- Color -->
+                <input type="file" id="defaultRegisterFormLastName" class="form-control" placeholder="image"
+                    name="image4">
+            </div>
+        </div>
+        <button class="btn btn-info my-4 " type="submit">Submit</button>
+    </form>
+</div>

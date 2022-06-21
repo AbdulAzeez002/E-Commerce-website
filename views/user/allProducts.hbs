@@ -1,0 +1,103 @@
+<div class="container pt-5">
+				<div class="row justify-content-center pt-5">
+					<div class="col-lg-6 text-center pt-md-5">
+						<div class="section-title">
+							<h1>Search Results</h1>
+						</div>
+					</div>
+				</div>
+				<div class="row ">
+                   {{#each products}}
+				<!-- single product -->
+				<div class="col-lg-3 col-6 pb-5">
+					<div class="single-product ">
+						<img class="img-fluid border border-warning rounded" src="/uploads/{{this.image.[0].image1}}"
+							alt="">
+						<div class="product-details ">
+							<h6><a href="/viewProduct/{{this._id}}">{{this.productName}}</a></h6>
+							<div class="price">
+								<h6>Rs {{this.price}}</h6>
+								<h6 style="color:darkred" class="l-through">Rs {{this.MRP}}</h6>
+								<h6 style="color:darkred">{{this.discount}} % off</h6>
+							</div>
+
+							{{#if ../user}}
+							<div class="prd-bottom ">
+
+								<span class="social-info" onclick="addToWishlist('{{this._id}}')">
+									<span class="lnr lnr-heart"></span>
+									<p class="hover-text"> Wishlist</p>
+								</span>
+
+								<span class="social-info" onclick="addToCart('{{this._id}}')">
+									<span class="ti-bag"></span>
+									<p class="hover-text">add Cart</p>
+								</span>
+							</div>
+							
+                          {{else}}
+							<div class="prd-bottom ">
+
+								<a href="/login"><span class="social-info">
+									<span class="lnr lnr-heart"></span>
+									<p class="hover-text"> Wishlist</p>
+								</span></a>
+
+								<a href="/login"><span class="social-info" >
+									<span class="ti-bag"></span>
+									<p class="hover-text">add Cart</p>
+								</span></a>
+							</div>
+							{{/if}}
+
+						</div>
+					</div>
+				</div>
+				{{/each}}
+					
+					
+				</div>
+			</div>
+
+
+            <script>
+	function addToWishlist(proId) {
+		$.ajax({
+			url: "/AddToWishlist/" + proId,
+			methode: "get",
+			success: (Response) => {
+
+				if (Response.modifiedCount == 1) {
+
+					let count = $('#wishCount').html()
+					count = parseInt(count) + 1
+					$("#wishCount").html(parseInt(count))
+
+
+				}
+			}
+		})
+
+
+
+	}
+
+	function addToCart(proId) {
+
+		$.ajax({
+			url: "/AddToCart/" + proId,
+			methode: "get",
+			success: (Response) => {
+
+
+				if (Response.modifiedCount == 1) {
+					let count = $('#cartCount').html()
+					count = parseInt(count) + 1
+					$("#cartCount").html(parseInt(count))
+
+				}
+			}
+		})
+	}
+
+</script>

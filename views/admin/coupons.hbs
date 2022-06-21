@@ -1,0 +1,313 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Lapstore Admin</title>
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor1/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css1/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="/vendor1/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!--Sweet Alert CDN-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/dashboard">
+                
+                <div class="sidebar-brand-text mx-3">Lapstore Admin </div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin/dashboard">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            
+
+             <li class="nav-item">
+                <a class="nav-link " href="/admin/viewproducts" >
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>All Product</span>
+                </a>
+                
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link " href="/admin/allOrders" >
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>All Orders</span>
+                </a>
+                
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link " href="/admin/viewUser" >
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>All Users</span>
+                </a>
+               
+            </li>
+
+            
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Offer Management</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        {{!-- <h6 class="collapse-header">Custom Utilities:</h6> --}}
+                        <a class="collapse-item" href="/admin/categories"> Discount</a>
+
+                        <a class="collapse-item" href="/admin/coupons">Coupons</a>
+                        
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiess"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Add Options</span>
+                </a>
+                <div id="collapseUtilitiess" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        {{!-- <h6 class="collapse-header">Custom Utilities:</h6> --}}
+                        <a class="collapse-item" href="/admin/categories">Categories</a>
+
+                        <a class="collapse-item" href="/admin/brands">Brands</a>
+                        
+                    </div>
+                </div>
+            </li>
+
+           
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                   <div class="text-center" >
+                   
+                 
+                 <h4 style="color:#8a9fdc">All Products </h4>
+                 
+                    </div>
+
+                      
+                    <!-- Topbar Navbar -->
+                    <div class="ml-auto">
+                    <ul class="navbar-nav ml-auto">
+
+                        
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{!-- <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span> --}}
+                                <img class="img-profile rounded-circle"
+                                    src="/img1/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                               
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/admin/logout" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+                    </div>
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                <!-- Page Heading -->
+
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Orders Table </h6>
+                    </div>
+                    <div class="ml-auto mr-3 mt-2">
+                        <a href="/admin/addCoupon"><button class="btn btn-primary">Add Coupon</button></a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    {{!-- <th scope="col">No</th> --}}
+                <th scope="col">Coupon Code</th>
+                <th scope="col">Limit</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Percentage</th>
+                <th scope="col">Options</th>
+                <th scope="col">Options</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each coupon}}
+                                <tr>
+
+                                    <td scope="row">{{this.coupon}}</td>
+                                    <td scope="row">{{this.limit}}</td>
+                                    <td scope="row">{{this.starting}}</td>
+                                    <td scope="row">{{this.expiry}}</td>
+                                    <td scope="row">{{this.offer}}</td>
+                                    <td>
+                                                <a href="/admin/editCoupon/{{this._id}}" class="btn btn-primary" >Edit </a>
+                                            </td>
+                                            <td>
+                               <a href="/admin/deleteCoupon/{{this._id}}" class="btn btn-danger delete-button" >Delete</a>
+
+                                            </td>
+
+                                            
+                                    
+                                    {{!-- <td><a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-danger" href="#" name="{{this.Category}}"
+                        onclick="deleteCoupon(event)"><i class="fas fa-trash-alt"></i></a>
+                </td> --}}
+                                    
+                                </tr>
+                                {{/each}}
+
+                            </tbody>
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            </div>
+        </div>
+    </div>
+    
+
+    
+<script>
+    $('.delete-button').on('click',function (e) {
+        e.preventDefault();
+        var self = $(this);
+        console.log(self.data('title'));
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this! ",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+              location.href = self.attr('href');
+            }
+        })
+
+    })
+
+    </script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor1/jquery/jquery.min.js"></script>
+    <script src="/vendor1/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor1/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/js1/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/vendor1/datatables/jquery.dataTables.min.js"></script>
+    <script src="/vendor1/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/js1/demo/datatables-demo.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

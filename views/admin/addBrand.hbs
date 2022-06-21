@@ -1,0 +1,21 @@
+<div class="container mt-5 col-xl-6">
+    <form class="text-center border border-light p-5" action="/admin/addBrand" method="post"
+        enctype="multipart/form-data">
+
+        <p class="h4 mb-4">Add Brand</p>
+
+        <div class="form-row mb-4">
+            <div class="col">
+                <!--  name -->
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Brand Name"
+                    name="brand">
+            </div>
+            <div class="col">
+                <input type="file" id="defaultRegisterFormFirstName" class="form-control" placeholder="Logo"
+                    name="logo">
+            </div>
+        </div>
+
+        <button class="btn btn-info my-4 " type="submit">Submit</button>
+    </form>
+</div>

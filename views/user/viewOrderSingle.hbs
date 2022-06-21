@@ -1,0 +1,238 @@
+<div class="container  pl-md-5 ">
+	<div class="row pt-2 pl-md-5">
+		<div class="pt-md-5">
+			<div class="col-12 col-md-10 hh-grayBox pt45 pb20 text-center pt-2 pl-md-5 ">
+				<div class="row justify-content-between pt-5 pl-md-5">
+					<div class="order-tracking">
+						<span class="is-complete"></span>
+						<p>Ordered<br><span>Mon, June 24</span></p>
+					</div>
+					<div class="order-tracking">
+						<span class="is-complete"></span>
+						<p>Shipped<br><span>Tue, June 25</span></p>
+					</div>
+					<div class="order-tracking">
+						<span class="is-complete"></span>
+						<p>Delivered<br><span>Fri, June 28</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="d-flex justify-content-center container pb-5  ">
+	<div class="card p-3 bg-white">
+
+
+		<div class="about-product text-center mt-2"><img src="/uploads/{{product.[0].product.image.[0].image1}}"
+				width="300">
+			<div>
+				<h4>{{product.status}}</h4>
+				<h6 class="mt-0 text-black-50">{{product.[0].product.productName}}</h6>
+			</div>
+		</div>
+		<div class="stats mt-2">
+			<div class="d-flex justify-content-between p-price"><span>price</span><span>₹
+					{{product.[0].product.price}}</span></div>
+			<div class="d-flex justify-content-between p-price">
+				<span>Category</span><span>{{product.[0].product.category}}</span></div>
+			<div class="d-flex justify-content-between p-price">
+				<span>quantity</span><span>{{product.[0].quantity}}</span>
+			</div>
+			<div class="d-flex justify-content-between p-price"><span>status</span><span>{{product.[0].status}}</span>
+			</div>
+		</div>
+		<div class="d-flex justify-content-between total font-weight-bold mt-4">
+			<span>Total</span><span>₹ {{product.[0].subtotal}}</span>
+		</div>
+		<div class="text-center">
+			{{#if product.[0].delivered }}
+
+
+			<a href="/review/{{product.[0].item}}"><button  class="btn btn-danger" >Review
+				Product</button></a>
+
+
+			{{else }}
+
+			{{#if product.[0].cancelled }}
+
+			<p style="color:orangered">Your Order has been Cancelled</p>
+
+			{{else}}
+
+
+
+			<button type="submit" class="btn btn-danger"
+				onclick="cancelOrder('{{product.[0]._id}}','{{product.[0].item}}','{{product.[0].product.price}}','{{product.[0].couponPercent}}','{{product.[0].quantity}}')">Cancel
+				Product</button>
+			{{/if}}
+			{{!-- </form> --}}
+			{{!-- <button class="btn btn-danger">cancel Order</button> --}}
+			{{/if}}
+		</div>
+
+
+	</div>
+</div>
+<style>
+	.card {
+		width: 444px;
+	}
+
+	body {
+		background: #eee;
+	}
+
+	.hh-grayBox {
+		background-color: #F8F8F8;
+		margin-bottom: 20px;
+		padding: 35px;
+		margin-top: 20px;
+	}
+
+	.pt45 {
+		padding-top: 45px;
+	}
+
+	.order-tracking {
+		text-align: center;
+		width: 33.33%;
+		position: relative;
+		display: block;
+	}
+
+	.order-tracking .is-complete {
+		display: block;
+		position: relative;
+		border-radius: 50%;
+		height: 30px;
+		width: 30px;
+		border: 0px solid #AFAFAF;
+		background-color: #f7be16;
+		margin: 0 auto;
+		transition: background 0.25s linear;
+		-webkit-transition: background 0.25s linear;
+		z-index: 2;
+	}
+
+	.order-tracking .is-complete:after {
+		display: block;
+		position: absolute;
+		content: '';
+		height: 14px;
+		width: 7px;
+		top: -2px;
+		bottom: 0;
+		left: 5px;
+		margin: auto 0;
+		border: 0px solid #AFAFAF;
+		border-width: 0px 2px 2px 0;
+		transform: rotate(45deg);
+		opacity: 0;
+	}
+
+	.order-tracking.completed .is-complete {
+		border-color: #27aa80;
+		border-width: 0px;
+		background-color: #27aa80;
+	}
+
+	.order-tracking.completed .is-complete:after {
+		border-color: #fff;
+		border-width: 0px 3px 3px 0;
+		width: 7px;
+		left: 11px;
+		opacity: 1;
+	}
+
+	.order-tracking p {
+		color: #A4A4A4;
+		font-size: 16px;
+		margin-top: 8px;
+		margin-bottom: 0;
+		line-height: 20px;
+	}
+
+	.order-tracking p span {
+		font-size: 14px;
+	}
+
+	.order-tracking.completed p {
+		color: #000;
+	}
+
+	.order-tracking::before {
+		content: '';
+		display: block;
+		height: 3px;
+		width: calc(100% - 40px);
+		background-color: #f7be16;
+		top: 43px;
+		position: absolute;
+		left: calc(-50% + 20px);
+		z-index: 0;
+	}
+
+	.order-tracking:first-child:before {
+		display: none;
+	}
+
+	.order-tracking.completed:before {
+		background-color: #27aa80;
+	}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/javascripts/addToCart.js"></script>
+
+
+
+<script>
+	var foo = "{{product.[0].status}}";
+	var div = document.getElementsByClassName("order-tracking")
+	if (foo == "Ordered") {
+		div[0].classList.add('completed')
+	} else if (foo == "Shipped") {
+		div[0].classList.add('completed')
+		div[1].classList.add('completed')
+	} else if (foo == "Delivered") {
+		div[0].classList.add('completed')
+		div[1].classList.add('completed')
+		div[2].classList.add('completed')
+	}
+
+
+
+	function cancelOrder(orderId, proId, price, discount, quantity) {
+
+		$.ajax({
+			url: "/cancelSingleProductOrder",
+			data: {
+				proId: proId,
+				orderId: orderId,
+				price: price,
+				discountPercent: discount,
+				quantity: quantity
+
+			},
+
+			method: "post",
+
+			success: (response) => {
+
+				if (response.status) {
+					location.href = "/viewOrderProducts/" + orderId
+
+				}
+				else {
+					location.href = "/viewOrderProducts/" + orderId
+				}
+
+			}
+		})
+	}
+</script>

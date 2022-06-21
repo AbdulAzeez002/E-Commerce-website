@@ -1,0 +1,94 @@
+<section class="h-100 gradient-custom pt-5">
+  <div class="container py-5 h-100 pt-5">
+    <div class="pt-5"></div>
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-10 col-xl-8">
+        <div class="card" style="border-radius: 10px;">
+
+          <div class="card-header px-4 py-5 text-gray-400 text-center">
+            <h5 class="text-muted mb-0"> <span style="color:  #ffcd87">Payment Pending Products</span></h5>
+          </div>
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              {{!-- <p class="lead fw-normal mb-0" style="color: #a8729a;">Receipt</p> --}}
+              <p class="small text-muted mb-0">Your order Id : {{orderDetails._id}}</p>
+              <div class="float-right"> 
+                   <a href="#"
+                    class="btn primary-btn">pay now</a>
+                  </div>
+            </div>
+            
+            {{#each order}}
+            <div class="card shadow-0 border mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-2">
+                    <img src="/uploads/{{this.products.image.[0].image1}}" class="img-fluid" alt="Phone">
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0">{{this.products.productName}}</p>
+                  </div>
+                  {{!-- <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small">{{this.product.Color}}</p>
+                  </div> --}}
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small">Qty: {{this.quantity}}</p>
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small"> ₹ {{this.subtotal}}</p>
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small">mode: {{../orderDetails.paymentMethod}}</p>
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small"><span style="color: rgb(0, 38, 255);">{{../orderDetails.status}}</span></p>
+                  </div>
+                  {{!-- <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small">{{../orderedDetails.date}}</p>
+                  </div> --}}
+                  
+                 
+                </div>
+
+              </div>
+            </div>
+            {{/each}}
+
+            <div class="d-flex justify-content-between pt-2">
+                <p class="fw-bold mb-0"><span style="color:#ffa020;">Order Details</span></p>
+
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <p class="text-muted mb-0"><span class="fw-bold me-4">Subtotal</span> ₹{{orderDetails.subtotal}}</p>
+              </div>
+
+              <div class="d-flex justify-content-between ">
+                <p class="text-muted mb-0"><span class="fw-bold me-4">Coupon Discount</span>
+                  {{orderDetails.couponDiscount}}</p>
+              </div>
+              <div class="d-flex justify-content-between ">
+                <p class="text-muted mb-0"><span class="fw-bold me-4">Total After
+                    Coupon</span>₹{{orderDetails.totalAmountWithoutShipping}}</p>
+              </div>
+              <div class="d-flex justify-content-between ">
+                <p class="text-muted mb-0"><span class="fw-bold me-4">Shipping Charge</span>₹40</p>
+              </div>
+              <div class="d-flex justify-content-between ">
+                <p class="text-muted mb-0"><span class="fw-bold me-4">Amount To Be
+                    Paid</span>₹{{orderDetails.totalAmountPaid}}</p>
+              </div>
+              
+
+            </div>
+            <div class="card-footer border-0 px-4 py-5 "
+              style="background-color: #ffcd87; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+              <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Grand Total:
+                <span class="h2 mb-0 ms-2">₹{{orderDetails.totalAmountPaid}}</span>
+              </h5>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

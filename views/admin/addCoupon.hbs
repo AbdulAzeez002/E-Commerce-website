@@ -1,0 +1,25 @@
+<div class="container mt-5 col-xl-4">
+    <h4 class="text-center mb-4 pt-4">ADD COUPON</h4>
+    <form action="/admin/addCoupon" id="productPage" method="post">
+
+        <div class="form-group first">
+            <label for="category">Coupon code</label>
+            <input type="text" class="form-control" name="coupon">
+
+            <label class="pt-4">Starting Date</label>
+            <input type="Date" class="form-control" required name="starting" id="str">
+            <label class="pt-4">Expiry Date</label>
+            <input type="Date" class="form-control" required name="expiry" id="exp">
+            <label class="pt-4">Limit</label>
+            <input type="number" class="form-control" required name="limit" id="lmt" min="1" max="20">
+            <label class="pt-4">Coupon Percentage</label>
+            <input type="text" class="form-control" required min="1" name="offer" max="95"
+                onkeypress="return isNumber(event)">
+        </div>
+        <div class="text-center">
+            <button id="prosub" type="submit" class="btn  btn-success mt-3 ">Submit</button>
+        </div>
+
+
+    </form>
+</div>
