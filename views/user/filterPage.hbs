@@ -280,8 +280,8 @@ function addToWishlist(proId) {
         success: (isResult) => {
             alert('ok')
             if (isResult) {
-                location.reload()
-               // $('#products').load(location.href + " #products");
+                //location.reload()
+                $('#products').load(location.href + " #products");
             }
         }
     })
@@ -297,9 +297,9 @@ function addToWishlist(proId) {
         success: (isResult) => {
             
             if (isResult) {
-               // alert('ok')
-                location.reload()
-                //$('#products').load(location.href + " #products");
+               alert('ok')
+               // location.reload()
+                $('#products').load(location.href + " #products");
             }
         }
     })
@@ -315,8 +315,8 @@ function addToWishlist(proId) {
         success: (isResult) => {
             if (isResult) {
                 
-                location.reload()
-               // $('#products').load(location.href + " #products");
+               // location.reload()
+                $('#products').load(location.href + " #products");
             }
         }
     })

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+let filterResult;
 require('dotenv').config();
 const ServiceSID = process.env.ServiceSID;
 const AccountSID = process.env.AccountSID;
@@ -14,7 +14,7 @@ const { resolveContent } = require('nodemailer/lib/shared');
 const couponHelpers = require('../helper/coupon-helper');
 const categoryHelper = require('../helper/category-helper');
 
-let filterResult;
+
 
 let verifyUserLogin = (req, res, next) => {
 
@@ -759,6 +759,8 @@ router.post('/search-filter', (req, res) => {
   categoryHelper.searchFilter(brandFilter, categoryFilter, price).then((result) => {
     filterResult = result
 
+    console.log(result);
+    console.log(filterResult);
     res.json({ status: true })
   })
 
