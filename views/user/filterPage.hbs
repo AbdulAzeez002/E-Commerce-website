@@ -278,7 +278,7 @@ function addToWishlist(proId) {
         method: "post",
         data: $('#filter').serialize(),
         success: (isResult) => {
-            
+            alert('ok')
             if (isResult) {
                 $('#products').load(location.href + " #products");
             }
@@ -296,6 +296,7 @@ function addToWishlist(proId) {
         success: (isResult) => {
             
             if (isResult) {
+                alert('ok')
                 $('#products').load(location.href + " #products");
             }
         }
@@ -311,6 +312,7 @@ function addToWishlist(proId) {
         data: $('#filter').serialize(),
         success: (isResult) => {
             if (isResult) {
+                alert('ok')
                 $('#products').load(location.href + " #products");
             }
         }
