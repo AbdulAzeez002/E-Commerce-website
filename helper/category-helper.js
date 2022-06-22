@@ -86,13 +86,13 @@ module.exports={
         console.log(price);
 
        console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
-       let result;
+       
         return new Promise(async (resolve, reject) => {
             
 
             if(brandFilter.length>0 && categoryFilter.length>0  ){
                 console.log('9999999999999999999877777ggggggggggggggggggggggggggggg');
-                 result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
+                let result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
                     {
                         $match:{$or:brandFilter}
                         
@@ -107,13 +107,14 @@ module.exports={
                     }
                 ]).toArray()
                 console.log('0707077777777777777777777777777777777777777777707');
-                console.log(result);
+                console.log(result,'result is');
+                resolve(result)
             } 
 
             else if(brandFilter.length>0 && categoryFilter.length==0  ){
                 console.log('0000000000000000000000000000000000000000000000000000000');
  
-                result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
+              let  result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
                     {
                         $match:{$or:brandFilter}
                         
@@ -122,12 +123,14 @@ module.exports={
                         $match:{price:{$lt:price}}
                     }
                 ]).toArray()
+                console.log(result,'result is');
+                resolve(result)
               
 
             }
             else if(brandFilter.length==0 && categoryFilter.length>0 ){
            console.log('96666674747474747474747477474747');
-            result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
+           let result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
                
                 
                 {
@@ -139,19 +142,21 @@ module.exports={
                 }
             ]).toArray()
             console.log(result,'is result');
-
+            resolve(result)
               }
             else{
                 log('85555343434343434343434343434343434343434343434343434')
-                 result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
+               let result= await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
                     
                     {
                         $match:{price:{$lt:price}}
                     }
                 ]).toArray()
+                console.log(result,'result is');
+                resolve(result)
             }
             // console.log("result is",result);
-            resolve(result)
+          
         })
         
       },
