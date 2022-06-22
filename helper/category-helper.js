@@ -81,6 +81,10 @@ module.exports={
     },
 
     searchFilter :(brandFilter,categoryFilter,price) => {
+        console.log('yyy is',brandFilter);
+        console.log(categoryFilter);
+        console.log(price);
+
        console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
         return new Promise(async (resolve, reject) => {
             let result;
