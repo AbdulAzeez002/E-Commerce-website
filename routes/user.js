@@ -756,7 +756,9 @@ router.post('/search-filter', (req, res) => {
   for (let i of a.category) {
     categoryFilter.push({ 'category': i })
   }
+  console.log('777777777777777777777777777777777777777777777777777777777777777777777');
   categoryHelper.searchFilter(brandFilter, categoryFilter, price).then((result) => {
+    console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
     filterResult = result
 
     console.log(result);

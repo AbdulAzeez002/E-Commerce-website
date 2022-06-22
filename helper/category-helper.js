@@ -81,7 +81,7 @@ module.exports={
     },
 
     searchFilter :(brandFilter,categoryFilter,price) => {
-       
+       console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
         return new Promise(async (resolve, reject) => {
             let result
 
