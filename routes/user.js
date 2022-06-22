@@ -744,8 +744,9 @@ router.get('/brand/:id', (req, res) => {
 
 
 router.post('/search-filter', (req, res) => {
-  console.log(req.body);
   console.log('88888888888888888888888888888888888888888888888888888888888888888');
+  console.log(req.body);
+ 
   let a = req.body
   let price = parseInt(a.Prize)
   let brandFilter = []
