@@ -353,10 +353,10 @@ router.get('/checkout/:id', async (req, res) => {
 router.post('/proceedToPay', async (req, res) => {
   let totalAmount = 0
   let products = await orderHelpers.getCartProductList(req.body.userId)
-  if (products.length > 0) {
-    totalAmount = await cartHelpers.getSubTotal(req.body.userId)
-  }
-
+  // if (products.length > 0) {
+  //   totalAmount = await cartHelpers.getSubTotal(req.body.userId)
+  // }
+totalAmount=req.body.amountToBePaid
   let userId = req.session.userId
 
   orderHelpers.placeOder(req.body, products, userId).then((orderId) => {
@@ -762,11 +762,11 @@ router.post('/search-filter', (req, res) => {
   }
   console.log('777777777777777777777777777777777777777777777777777777777777777777777');
   categoryHelper.searchFilter(brandFilter, categoryFilter, price).then((result) => {
-    console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
+    // console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
     filterResult = result
 
-    console.log(result);
-    console.log(filterResult);
+    // console.log(result);
+    // console.log(filterResult);
     res.json({ status: true })
   })
 
