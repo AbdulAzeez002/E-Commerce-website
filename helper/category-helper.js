@@ -130,6 +130,8 @@ module.exports={
             }
             else if(brandFilter.length==0 && categoryFilter.length>0 ){
            console.log('96666674747474747474747477474747');
+           let brand=await db.get().collection(collection.CATEGORY_COLLECTION).find().toArray()
+           console.log('brand is',brand);
            let result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
                
                 
