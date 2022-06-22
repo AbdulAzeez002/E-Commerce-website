@@ -745,14 +745,17 @@ router.get('/brand/:id', (req, res) => {
 
 router.post('/search-filter', (req, res) => {
   console.log(req.body);
+  console.log('88888888888888888888888888888888888888888888888888888888888888888');
   let a = req.body
   let price = parseInt(a.Prize)
   let brandFilter = []
   let categoryFilter = []
 
+  console.log('9999999999999999999999999999988888888888888888888888888888888888888888888888888888888888888888');
   for (let i of a.brand) {
     brandFilter.push({ 'brand': i })
   }
+  console.log('pppppppppppppppppppppppppppppppppppppppppppppppppppppppppp');
   for (let i of a.category) {
     categoryFilter.push({ 'category': i })
   }
