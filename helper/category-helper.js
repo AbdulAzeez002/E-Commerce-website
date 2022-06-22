@@ -83,7 +83,7 @@ module.exports={
     searchFilter :(brandFilter,categoryFilter,price) => {
        console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
         return new Promise(async (resolve, reject) => {
-            let result
+            let result;
 
             if(brandFilter.length>0 && categoryFilter.length>0  ){
                  result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
@@ -137,9 +137,10 @@ module.exports={
                     }
                 ]).toArray()
             }
-            
+            console.log("result is",result);
             resolve(result)
         })
+        
       },
 
     //   getCategoryProducts:()=>{
