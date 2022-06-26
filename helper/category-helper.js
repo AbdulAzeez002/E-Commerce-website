@@ -81,106 +81,66 @@ module.exports={
     },
 
     searchFilter :(brandFilter,categoryFilter,price) => {
-        console.log('yyy is',brandFilter);
-        console.log(categoryFilter);
-        console.log(price);
-
-       console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
        
         return new Promise(async (resolve, reject) => {
-            
+            let result
 
             if(brandFilter.length>0 && categoryFilter.length>0  ){
-                console.log('9999999999999999999877777ggggggggggggggggggggggggggggg');
-                let result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
+                 result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
                     {
-                        $match:{$or:brandFilter}
+                        $match:{$and:[{$or:brandFilter},{$or:categoryFilter},{price:{$lt:price}}]}
                         
                     },
 
-                    {
-                        $match:{$or:categoryFilter}
+                    // {
+                    //     $match:{$or:categoryFilter}
                         
-                    },
-                    {
-                        $match:{price:{$lt:price}}
-                    }
+                    // },
+                    // {
+                    //     $match:{price:{$lt:price}}
+                    // }
                 ]).toArray()
-                console.log('0707077777777777777777777777777777777777777777707');
-                console.log(result,'result is');
-                resolve(result)
             } 
 
             else if(brandFilter.length>0 && categoryFilter.length==0  ){
-                console.log('0000000000000000000000000000000000000000000000000000000');
  
-              let  result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
+                result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
                     {
-                        $match:{$or:brandFilter}
+                        $match:{$and:[{$or:brandFilter},{price:{$lt:price}}]}
                         
                     },
-                    {
-                        $match:{price:{$lt:price}}
-                    }
+                    // {
+                    //     $match:{price:{$lt:price}}
+                    // }
                 ]).toArray()
-                console.log(result,'result is');
-                resolve(result)
-              
+
 
             }
-            else if(brandFilter.length==0 && categoryFilter.length>0 ){
-           console.log('96666674747474747474747477474747');
-           let brand=await db.get().collection(collection.CATEGORY_COLLECTION).find().toArray()
-           console.log('brand is',brand);
-           let result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
+            else if(brandFilter.length==0 && categoryFilter.length>0 )
+            result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
                
-                
                 {
-                    $match:{$or:categoryFilter}
+                    $match:{$and:[{$or:categoryFilter},{price:{$lt:price}}]}
                     
                 },
-                {
-                    $match:{price:{$lt:price}}
-                }
+                // {
+                //     $match:{price:{$lt:price}}
+                // }
             ]).toArray()
-            console.log(result,'is result');
-            resolve(result)
-              }
+
+        
             else{
-                log('85555343434343434343434343434343434343434343434343434')
-               let result= await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
+                 result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
                     
                     {
                         $match:{price:{$lt:price}}
                     }
                 ]).toArray()
-                console.log(result,'result is');
-                resolve(result)
             }
-            // console.log("result is",result);
-          
-        })
-        
-      },
-
-    //   getCategoryProducts:()=>{
-        
-
-        
-
-    //     return new Promise(async(resolve,reject)=>{
-    //       let products=await  db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
-    //         {
-    //             $match:{category:'Gaming'}
-    //         }
-    //       ]).toArray()
-
-    //        console.log("",products);     
-    //       resolve(products)
             
-    //     })
-    //   }
-
+            resolve(result)
+        })
+      },
     
     
 
