@@ -5,23 +5,15 @@
 </style>
 
 <!--================Login Box Area =================-->
-<section class="login_box_area section_gap ">
+
+
+
+<section class="login_box_area section_gap  ">
 	<div class="container pt-5">
 		<div class="row">
-			<div class="col-lg-6">
-				<div class="login_box_img">
-					<img class="img-fluid" src="img/login.jpg" alt="">
-					<div class="hover">
-						<h4>New to our website?</h4>
-						{{!-- <p>There are advances being made in science and technology everyday, and a good example of this
-							is the</p> --}}
-							<br>
-						<a class="primary-btn" href="/signup">Create an Account</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-6">
+			
+			
+			<div class="col-lg-6 ">
 				<div class="login_form_inner">
 					<h3>Log in to enter</h3>
 
@@ -43,13 +35,13 @@
 								onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
 						</div>
 						<div class="col-md-12 form-group">
-							<input type="password" class="form-control" id="password" name="password" placeholder="Password"
+							<input type="text" class="form-control" id="password" name="password" placeholder="Password"
 								onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
 						</div>
 						<div class="col-md-12 form-group">
 							<div class="creat_account">
-								{{!-- <input type="checkbox" id="f-option2" name="selector">
-								<label for="f-option2">Keep me logged in</label> --}}
+								<input type="checkbox" id="f-option2" name="selector">
+								<label for="f-option2">Keep me logged in</label>
 							</div>
 						</div>
 						<div class="col-md-12 form-group">
@@ -59,9 +51,23 @@
 					</form>
 				</div>
 			</div>
+			<div class="col-lg-6">
+				<div class="login_box_img">
+					<img class="img-fluid" src="img/login.jpg" alt="">
+					<div class="hover">
+						<h4>New to our website?</h4>
+						{{!-- <p>There are advances being made in science and technology everyday, and a good example of this
+							is the</p> --}}
+							<br>
+						<a class="primary-btn" href="/signup">Create an Account</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
+	
 </section>
+
 
 <script>
 	$(document).ready(function () {

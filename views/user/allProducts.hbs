@@ -60,7 +60,7 @@
 			</div>
 
 
-            <script>
+             <script>
 	function addToWishlist(proId) {
 		$.ajax({
 			url: "/AddToWishlist/" + proId,
@@ -68,6 +68,12 @@
 			success: (Response) => {
 
 				if (Response.modifiedCount == 1) {
+					Swal.fire({
+                    icon: 'success',
+                    title: '',
+                    text: 'Added to Wishlist',
+                    footer: ''
+                  })
 
 					let count = $('#wishCount').html()
 					count = parseInt(count) + 1
@@ -91,6 +97,12 @@
 
 
 				if (Response.modifiedCount == 1) {
+					Swal.fire({
+                    icon: 'success',
+                    title: '',
+                    text: 'Added to Cart',
+                    footer: ''
+                  })
 					let count = $('#cartCount').html()
 					count = parseInt(count) + 1
 					$("#cartCount").html(parseInt(count))

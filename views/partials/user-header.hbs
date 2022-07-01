@@ -1,114 +1,119 @@
-
-
-<header class="header_area sticky-header">
-		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light main_box">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					{{!-- <a class="navbar-brand logo_h" href="index.html"><img src="/img/logo7.jpg" alt=""></a> --}}
-					<a style="text-decoration:none" href="/"><h2><span style="color:rgb(247, 106, 6)">Lap </span><span style="color:rgb(42, 42, 133)">Store</span></h2></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
-							<li class="nav-item "><a class="nav-link" href="/shop">Shop</a></li>
-							{{!-- <li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Shop</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="/">Shop Category</a></li>
-									<li class="nav-item"><a class="nav-link" href="/">Product Details</a></li>
-									<li class="nav-item"><a class="nav-link" href="/">Product Checkout</a></li>
-									<li class="nav-item"><a class="nav-link" href="/">Shopping Cart</a></li>
-									<li class="nav-item"><a class="nav-link" href="/">Confirmation</a></li>
-								</ul>
-							</li> --}}
-							{{!-- <li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Blog</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-									<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-								</ul>
-							</li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Pages</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-									<li class="nav-item"><a class="nav-link" href="tracking.html">Tracking</a></li>
-									<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
-								</ul>
-							</li> --}}
-							{{!-- <li class="nav-item"><a class="nav-link" href="#">Contact</a></li> --}}
-							<li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-
-             {{#if user}}
-              <li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">{{user.name}}</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
-									<li class="nav-item"><a class="nav-link" href="/user-logout">Logout</a></li>
-									
-								</ul>
-							</li>
-
-              <li class="nav-item"><a class="nav-link" href="/cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-  <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-</svg><span class="badge badge-danger" id="cartCount">{{cartCount}}</span>
-</a></li>
-
-<li class="nav-item"><a class="nav-link" href="/wishlist"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-</svg><span class="badge badge-danger" id="wishCount">{{wishlistCount}}</span></a></li>
-
-              {{else}}
-              
-
-
-              <li class="nav-item"><a class="nav-link" href="/login"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
-  <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
-</svg></a></li>
-
-<li class="nav-item"><a class="nav-link" href="/login"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-  <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-</svg>
-</a></li>
-
-<li class="nav-item"><a class="nav-link" href="/login"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-</svg></a></li>
-               {{/if}}
-                
-                
-
-
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							{{!-- <li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li> --}}
-							<li class="nav-item">
-								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-							</li>
-              
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-		<div class="search_input" id="search_input_box">
+<header class="header_area sticky-header ">
+	<div class="main_menu" style="height=200px">
+		<nav class="navbar navbar-expand-lg navbar-light main_box py-3">
 			<div class="container">
-				<form class="d-flex justify-content-between" action="/search" method="post">
-					<input type="text" class="form-control" id="search_input" placeholder="Search Here" name="key">
-					<button type="submit" class="btn btn-primary"></button>
-					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+
+				<a style="text-decoration:none" href="/">
+					<h2><span style="color:rgb(247, 106, 6)">Lap </span><span
+							style="color:rgb(42, 42, 133)">Store</span></h2>
+				</a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+				<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+					<ul class="nav navbar-nav menu_nav ml-auto">
+						<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+						<li class="nav-item "><a class="nav-link" href="/shop">Shop</a></li>
+
+						<li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+
+						{{#if user}}
+						<li class="nav-item submenu dropdown">
+							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+								aria-haspopup="true" aria-expanded="false">{{user.name}}</a>
+							<ul class="dropdown-menu">
+								<li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
+								<li class="nav-item"><a class="nav-link" href="/user-logout">Logout</a></li>
+
+							</ul>
+						</li>
+
+						<li class="nav-item"><a class="nav-link" href="/cart"><svg xmlns="http://www.w3.org/2000/svg"
+									width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+									<path
+										d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+								</svg><span class="badge badge-danger" id="cartCount">{{cartCount}}</span>
+							</a></li>
+
+						<li class="nav-item"><a class="nav-link" href="/wishlist"><svg
+									xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+									class="bi bi-heart" viewBox="0 0 16 16">
+									<path
+										d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+								</svg><span class="badge badge-danger" id="wishCount">{{wishlistCount}}</span></a></li>
+
+						<li class="nav-item"><a class="nav-link" data-mdb-toggle="modal"
+								data-mdb-target="#exampleModal"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+									height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+									<path
+										d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+								</svg></a></li>
+
+						{{else}}
+
+
+
+						<li class="nav-item"><a class="nav-link" href="/login"><svg xmlns="http://www.w3.org/2000/svg"
+									width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+									<path
+										d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+								</svg></a></li>
+
+						<li class="nav-item"><a class="nav-link" href="/login"><svg xmlns="http://www.w3.org/2000/svg"
+									width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+									<path
+										d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+								</svg>
+							</a></li>
+
+						<li class="nav-item"><a class="nav-link" href="/login"><svg xmlns="http://www.w3.org/2000/svg"
+									width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+									<path
+										d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+								</svg></a></li>
+						<li class="nav-item"><a class="nav-link" data-mdb-toggle="modal"
+								data-mdb-target="#exampleModal"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+									height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+									<path
+										d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+								</svg></a></li>
+						{{/if}}
+					</ul>
+
+				</div>
+			</div>
+		</nav>
+	</div>
+
+</header>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Search Your Poducts</h5>
+				<button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form action="/search" method="post">
+					<div style="display:flex;justify-content: space-between;">
+						<input style="width:100% ;margin-right: 5px;" type="text" name="key" placeholder="Search Here"
+							required>
+						<button type="submit" class="btn btn-primary">Search</button>
+					</div>
 				</form>
 			</div>
+			<div class="modal-footer">
+
+
+
+			</div>
 		</div>
-	</header>
+	</div>
+</div>
