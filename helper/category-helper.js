@@ -81,6 +81,7 @@ module.exports={
     },
 
     searchFilter :(brandFilter,categoryFilter,price) => {
+        console.log('111111111111111111111111111111111111111111111');
         console.log('reached search filter');
        
         return new Promise(async (resolve, reject) => {
