@@ -201,7 +201,7 @@ getOneOrder:(orderId)=>{
     getOrder:(userId,orderId)=>{
         return new Promise(async(resolve,reject)=>{
         let order=await db.get().collection(collection.ORDER_COLLECTION).findOne({$and:[{userId:objectId(userId)},{_id:objectId(orderId)}]})
-        // console.log(order.status+'OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO')
+       
         resolve(order)
        
         })
@@ -270,7 +270,6 @@ getOneOrder:(orderId)=>{
               },
               {
                   $unwind:'$products',
-                //   $unwind:'$deliveryDetails'
 
               },
               {
@@ -303,7 +302,6 @@ getOneOrder:(orderId)=>{
 
              
             ]).toArray()
-            // console.log(orderItems)
             resolve(orderItems)
         })
         
@@ -312,7 +310,7 @@ getOneOrder:(orderId)=>{
     getOrder2:(orderId)=>{
       return new Promise(async(resolve,reject)=>{
       let order=await db.get().collection(collection.ORDER_COLLECTION).findOne({_id:objectId(orderId)})
-      // console.log(order.status+'OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO')
+      
       resolve(order)
      
       })
@@ -328,7 +326,6 @@ getOneOrder:(orderId)=>{
                    "products.$.orderStatus":data.orderStatus
                   }  
             }).then((response)=>{
-              console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT');
               console.log(response);
                 resolve(response)
             })
@@ -375,7 +372,6 @@ cancelSingleProductOrder:(data)=>{
         },
         {
           $unwind:'$products',
-        //   $unwind:'$deliveryDetails'
 
       },
       {

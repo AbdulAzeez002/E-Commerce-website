@@ -9,14 +9,14 @@
             <label class="pt-4">Starting Date</label>
             <input type="Date" class="form-control" required name="starting" id="str" value="{{coupon.starting}}">
             <label class="pt-4">Expiry Date</label>
-            <input type="Date" class="form-control" required name="expiry" id="exp" value="{{coupon.expiry}}" >
+            <input type="Date" class="form-control" required name="expiry" id="exp" value="{{coupon.expiry}}">
             <label class="pt-4">Limit</label>
-            <input type="number" class="form-control" required name="limit" id="limit" value="{{coupon.limit}}" >
+            <input type="number" class="form-control" required name="limit" id="limit" value="{{coupon.limit}}">
 
             <label class="pt-4">Coupon Percentage</label>
             <input type="text" class="form-control" required min="1" name="offer" max="95"
                 onkeypress="return isNumber(event)" value="{{coupon.offer}}">
-          <input type="text" class="form-control"  name="couponId"  value="{{coupon._id}}" hidden >
+            <input type="text" class="form-control" name="couponId" value="{{coupon._id}}" hidden>
 
         </div>
         <div class="text-center">

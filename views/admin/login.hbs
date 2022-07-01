@@ -1,99 +1,88 @@
-
-
 <div class="container mt-5">
-       
-        <!-- Outer Row -->
-        <div class="row justify-content-center ">
 
-            <div class="col-xl-10 col-lg-12 col-md-9">
+    <!-- Outer Row -->
+    <div class="row justify-content-center ">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0 mt-5">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block "> <img src="/img1/adminimage.jpg"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                                    </div>
-                                    <form class="user" id="formss" action="/admin/login" method="post">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address..." name="email">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password" name="password">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
-                                          
-                                        {{!-- <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a> --}}
-                                        
-                                    
-                                    
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0 mt-5">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block "> <img src="/img1/adminimage.jpg"></div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                 </div>
+                                <form class="user" id="formss" action="/admin/login" method="post">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control form-control-user"
+                                            id="exampleInputEmail" aria-describedby="emailHelp"
+                                            placeholder="Enter Email Address..." name="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="Password" name="password">
+                                    </div>
+                                    <div class="form-group">
+                                        {{!-- <div class="custom-control custom-checkbox small">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck">
+                                            <label class="custom-control-label" for="customCheck">Remember
+                                                Me</label>
+                                        </div> --}}
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
+
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
-        
 
     </div>
 
-    
 
-    <script>
-			
-			$(function(){
+</div>
 
-				// First: Add with default messages
-				//$("#frm-add-data").validate();				
 
-				// Second: Change default messages
-				$("#formss").validate({
-                	rules: { // to define rules
-                		email: "required",
-                		
-                		password: {
-                			required: true,
-            				minlength: 4
-                		},
-                       
-                        
-                	},
-                    messages:{ // to define custom messages
-                    	
-                    	
-                    	password: {
-				            required: "Enter password",
-				            minlength: "Enter minimum 4 digits"
-				        },
-                       
-                        email: {
-                            required:'enter Email',
-          email: "The email should be in the format: abc@domain.tld"
-        },
-                    },
-                    submitHandler: function(form) {  
-                           if ($(form).valid()) 
-                               form.submit(); 
-                           return false; // prevent normal form posting
-                    }
-                });
-			});
-		</script>
+
+<script>
+
+    $(function () {
+
+
+        $("#formss").validate({
+            rules: {
+                email: "required",
+
+                password: {
+                    required: true,
+                    minlength: 4
+                },
+
+
+            },
+            messages: {
+
+
+                password: {
+                    required: "Enter password",
+                    minlength: "Enter minimum 4 digits"
+                },
+
+                email: {
+                    required: 'enter Email',
+                    email: "The email should be in the format: abc@domain.tld"
+                },
+            },
+            submitHandler: function (form) {
+                if ($(form).valid())
+                    form.submit();
+                return false;
+            }
+        });
+    });
+</script>

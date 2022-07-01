@@ -8,7 +8,6 @@
             <center>
                 <h3>Invoice</h3>
             </center>
-            {{!-- <a href="/" class="btn primary-btn mb-4">go home</a> --}}
 
             <div class="row">
 
@@ -44,12 +43,6 @@
                                     <p class="mb-1">
                                        Manjeri,Kerala
                                     </p>
-                                    {{!-- <p class="mb-1">
-                                        <%=order.deliveryDetails.mobile%>
-                                    </p>
-                                    <p class="mb-1">
-                                        <%=order.deliveryDetails.pincode%>
-                                    </p> --}}
                                 </div>
 
                                 <div class="col-md-4">
@@ -85,7 +78,6 @@
                                     <table class="table" id="invoice">
                                         <thead>
                                             <tr>
-                                                {{!-- <th class="border-0 text-uppercase small font-weight-bold">No</th> --}}
                                                 <th class="border-0 text-uppercase small font-weight-bold">Item</th>
                                                 <th class="border-0 text-uppercase small font-weight-bold">Type</th>
                                                 <th class="border-0 text-uppercase small font-weight-bold">Quantity</th>
@@ -97,7 +89,6 @@
                                         <tbody>
                                             {{#each orderProduct}}
                                                 <tr>
-                                                    {{!-- <td></td> --}}
                                                     <td>
                                                         {{this.products.productName}}
                                                     </td>

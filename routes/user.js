@@ -306,10 +306,10 @@ router.post('/changeCartQuantity', async (req, res) => {
   let total = 0;
   cartHelpers.changeCartQuantity(req.body).then(async (response) => {
 
-    if(response.error){
+    if (response.error) {
       res.json(response)
     }
-    else{
+    else {
       cartHelpers.changeCartSubtotal(req.body).then(() => {
         console.log('abc');
       })
@@ -318,10 +318,10 @@ router.post('/changeCartQuantity', async (req, res) => {
         total = await cartHelpers.getSubTotal(req.body.user)
       }
       response.total = total
-  
+
       res.json(response)
     }
-    
+
   })
 });
 
@@ -356,7 +356,7 @@ router.post('/proceedToPay', async (req, res) => {
   // if (products.length > 0) {
   //   totalAmount = await cartHelpers.getSubTotal(req.body.userId)
   // }
-totalAmount=req.body.amountToBePaid
+  totalAmount = req.body.amountToBePaid
   let userId = req.session.userId
 
   orderHelpers.placeOder(req.body, products, userId).then((orderId) => {
@@ -607,7 +607,7 @@ router.get('/allOrders', (req, res) => {
 
 router.get('/viewOrderProducts/:id', async (req, res) => {
 
-  
+
   let orderId = req.params.id
   let user = req.session.user
   let order = await orderHelpers.getOrderDetails(orderId, user._id) //orderProducts
@@ -616,16 +616,16 @@ router.get('/viewOrderProducts/:id', async (req, res) => {
 
   let GrandTotal = parseInt(total) + 40
 
-  if(orderDetails.status=='placed'){
-  res.render('user/viewOrderProducts', { order, orderDetails, total, GrandTotal, user, otp: true })
+  if (orderDetails.status == 'placed') {
+    res.render('user/viewOrderProducts', { order, orderDetails, total, GrandTotal, user, otp: true })
 
   }
-  else{
+  else {
     res.render('user/pendingOrderProduct', { order, orderDetails, total, GrandTotal, user, otp: true })
 
   }
 
-  
+
 
 
 })
@@ -742,72 +742,13 @@ router.get('/brand/:id', (req, res) => {
 
 })
 
+router.get('/shop', async (req, res) => {
 
-router.post('/search-filter', (req, res) => {
-  console.log('88888888888888888888888888888888888888888888888888888888888888888');
-  // console.log(req.body);
- 
-  let a = req.body
-  let price = parseInt(a.Prize)
-  let brandFilter = []
-  let categoryFilter = []
 
-  console.log('9999999999999999999999999999988888888888888888888888888888888888888888888888888888888888888888');
-  for (let i of a.brand) {
-    brandFilter.push({ 'brand': i })
-  }
-  console.log('pppppppppppppppppppppppppppppppppppppppppppppppppppppppppp');
-  for (let i of a.category) {
-    categoryFilter.push({ 'category': i })
-  }
-  console.log('777777777777777777777777777777777777777777777777777777777777777777777');
-  categoryHelper.searchFilter(brandFilter, categoryFilter, price).then((result) => {
-
-    console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
-    filterResult = result
-
-    // console.log(result);
-    // console.log(filterResult);
-    res.json({ status: true })
-  })
-
-})
-
-// router.post('/search-filter', (req, res) => {
-//   console.log(req.body);
-//   let data = req.body
-//   console.log(data.Prize);
-
-//   let price = parseInt(data.Prize)
-//   console.log(price);
-//   let brandFilter = []
-//   let cateFilter=[]
-//   for (let i of data.brand) {
-//     brandFilter.push({ 'brand': i })
-//   }
-//   for (let i of data.category) {
-//     cateFilter.push({ 'category': i })
-//   }
-//   productHelpers.searchFilter(brandFilter,cateFilter, price).then((result) => {
-//     filterResult = result
-//     res.json({ status: true })
-//   })
- 
-// })
-
-router.get('/shop', (req, res) => {
-  productHelpers.getAllProducts().then(async (products) => {
-    filterResult = products
-
-    res.redirect('/filterPage')
-  })
-
-})
-
-router.get('/filterPage', async (req, res) => {
 
   let cartCount = ''
   let wishlistCount = ''
+  let products = await productHelpers.getAllProducts()
 
   user = req.session.user
   if (user) {
@@ -819,37 +760,37 @@ router.get('/filterPage', async (req, res) => {
 
   let category = await categoryHelper.getCategory()
   let brand = await categoryHelper.getBrand()
-  res.render('user/filterPage', { filterResult, category, brand, cartCount, wishlistCount, user })
+  res.render('user/allProducts', { products, category, brand, cartCount, wishlistCount, user })
 
 })
 
 // category starts
 
-router.get('/category/:id',(req,res)=>{
+router.get('/category/:id', (req, res) => {
 
-  category=req.params.id
+  category = req.params.id
   console.log(category);
 
-  categoryHelper.getCategoryProducts(category).then((products)=>{
+  categoryHelper.getCategoryProducts(category).then((products) => {
 
-    res.render('user/allProducts',{products})
-    
+    res.render('user/allProducts', { products })
+
   })
 })
 
-router.get('/review/:id',(req,res)=>{
-  let id=req.params.id
-  res.render('user/review',{id})
+router.get('/review/:id', (req, res) => {
+  let id = req.params.id
+  res.render('user/review', { id })
 })
 
-router.post('/review',(req,res)=>{
+router.post('/review', (req, res) => {
   console.log(req.body);
-  productHelpers.addReview(req.body).then((response)=>{
+  productHelpers.addReview(req.body).then((response) => {
     res.redirect('/allOrders')
   })
 });
 
-router.get('/about',(req,res)=>{
+router.get('/about', (req, res) => {
   res.render('user/about')
 })
 

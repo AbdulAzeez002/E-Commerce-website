@@ -232,17 +232,17 @@ router.get('/brands', (req, res) => {
 
 });
 
-router.get('/addBrand',(req,res)=>{
+router.get('/addBrand', (req, res) => {
 
-  res.render('admin/addBrand',{ admin: true, otp: true})
+  res.render('admin/addBrand', { admin: true, otp: true })
 })
 
-router.post('/addBrand',storage.fields([{ name: 'logo', maxCount: 1 },]), (req, res) => {
+router.post('/addBrand', storage.fields([{ name: 'logo', maxCount: 1 },]), (req, res) => {
   let img1 = req.files.logo[0].filename
   console.log(req.body);
-  let data={}
-   data.brandName=req.body.brand,
-   data.logo=img1
+  let data = {}
+  data.brandName = req.body.brand,
+    data.logo = img1
 
 
   categoryHelpers.addBrand(data).then((response) => {
@@ -253,20 +253,20 @@ router.post('/addBrand',storage.fields([{ name: 'logo', maxCount: 1 },]), (req, 
 });
 
 
-router.get('/editBrand/:id',(req,res)=>{
+router.get('/editBrand/:id', (req, res) => {
 
-  categoryHelpers.getOneBrand(req.params.id).then((brand)=>{
-    res.render('admin/editBrand',{admin:true,otp:true,brand})
+  categoryHelpers.getOneBrand(req.params.id).then((brand) => {
+    res.render('admin/editBrand', { admin: true, otp: true, brand })
   })
 })
 router.post('/editBrand', storage.fields([{ name: 'logo', maxCount: 1 },
 ]), (req, res) => {
   let img1 = req.files.logo[0].filename
-  
-  let data={}
-   data.brandName=req.body.brand,
-   data.logo=img1,
-   data.id=req.body.id
+
+  let data = {}
+  data.brandName = req.body.brand,
+    data.logo = img1,
+    data.id = req.body.id
 
   categoryHelpers.editBrand(data).then((response) => {
 
@@ -307,7 +307,7 @@ router.post('/changeOrderStatus', (req, res) => {
 
   let data = req.body
   orderHelpers.updateOrderStatus(data).then(async (response) => {
-    // console.log(response);
+    
     let orderId = req.body.orderId
     let order = await orderHelpers.getOrderDetails2(orderId) //orderProducts
     let orderDetails = await orderHelpers.getOrder2(orderId)   // order details
@@ -316,7 +316,7 @@ router.post('/changeOrderStatus', (req, res) => {
 
 
     let GrandTotal = parseInt(total) + 40
-    res.render('admin/viewOrderProduct', { order, orderDetails, total, GrandTotal,otp: true, admin: true, orderId })
+    res.render('admin/viewOrderProduct', { order, orderDetails, total, GrandTotal, otp: true, admin: true, orderId })
   })
 
 });

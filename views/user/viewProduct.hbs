@@ -201,11 +201,7 @@
 									<div class="media-body">
 										<h4>{{this.name}}</h4>
 										<P><span style="font-weight:bold">Rating:</span> {{this.rating}}  out of 5</P>
-										{{!-- <i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i> --}}
+										
 									</div>
 								</div>
 								<p>{{this.review}}</p>
@@ -244,7 +240,7 @@
 
 
 					alert(Response)
-					//location.reload()
+					
 					let count = $('#wishCount').html()
 					count = parseInt(count) + 1
 					$("#wishCount").html(parseInt(count))
@@ -271,14 +267,11 @@
 			},
 			success: (Response) => {
 
-
-
 				if (Response.modifiedCount == 1) {
 
 					alert('added to cart')
 
 					alert(Response)
-					//location.reload()
 					let count = $('#cartCount').html()
 					count = parseInt(count) + 1
 					$("#cartCount").html(parseInt(count))

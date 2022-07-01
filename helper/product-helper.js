@@ -22,14 +22,7 @@ module.exports = {
                 console.log(datas)
 
                 response.id = datas.insertedId
-                // response.status=true
-
                 resolve(response)
-
-
-
-
-
 
             })
 
@@ -168,20 +161,10 @@ module.exports = {
                 response.status = false
                 resolve(response)
             }
-
-
-
-
-            // console.log(product)
-            // resolve(product)
         })
 
 
     },
-
-
-
-
     productDetail: (id) => {
 
         return new Promise((resolve, reject) => {
@@ -204,20 +187,6 @@ module.exports = {
                     })
         })
     },
-
-    // UpdateProductDetail:(proId)=>{
-    //     return new Promise((resolve,reject)=>{
-    //         db.get().collection(collection.PRODUCT_COLLECTION)
-    //         .updateOne({_id:objectId(proId)},
-    //         {
-    //             $set:{
-    //                 wishlist:false
-    //             }
-    //         }).then((response)=>{
-    //             resolve(response)
-    //         })
-    //     })
-    // },
 
     getOneProduct: (data) => {
         return new Promise(async (resolve, reject) => {
@@ -244,10 +213,6 @@ module.exports = {
 
                         couponPercent: '$couponPercent',
                         couponDiscount: '$couponDiscount',
-
-
-
-
                     }
                 },
                 {
@@ -324,12 +289,8 @@ module.exports = {
 
             let product = await db.get().collection(collection.PRODUCT_COLLECTION)
                 .findOne({ _id: objectId(data.proId) })
-
-                
-                console.log('333333333333333333333333333333333333333333333333333');
-
             if (product.reviews) {
-console.log('9999999999999999999999999999999999999999');
+
                 db.get().collection(collection.PRODUCT_COLLECTION)
                     .updateOne({ _id: objectId(data.proId) },
                         {
@@ -346,8 +307,6 @@ console.log('9999999999999999999999999999999999999999');
                         {
                             $push: { reviews:data }
                         }).then((response) => {
-                            console.log('0000000000000000000000000000000000000');
-                            console.log(response);
                             resolve(response)
                         })
             }
@@ -358,13 +317,11 @@ console.log('9999999999999999999999999999999999999999');
     },
     searchFilter: (brandFilter, cateFilter, price) => {
         return new Promise(async (resolve, reject) => {
-            console.log('5555555555555555555555555555555555555555');
           let result;
           console.log(brandFilter);
           console.log(cateFilter);
           console.log(price);
           if (brandFilter.length > 0 && cateFilter.length > 0) {
-            console.log('1111111111111111111');
             result = await db
               .get()
               .collection(collection.PRODUCT_COLLECTION)
@@ -381,7 +338,6 @@ console.log('9999999999999999999999999999999999999999');
               ])
               .toArray();
           } else if (brandFilter.length > 0 && cateFilter.length == 0) {
-            console.log('2222222222222222222222');
             result = await db
               .get()
               .collection(collection.PRODUCT_COLLECTION)
@@ -395,7 +351,6 @@ console.log('9999999999999999999999999999999999999999');
               ])
               .toArray();
           } else if (brandFilter.length == 0 && cateFilter.length > 0){
-          console.log('333333333333333333333333333');
             result = await db
               .get()
               .collection(collection.PRODUCT_COLLECTION)
@@ -410,7 +365,6 @@ console.log('9999999999999999999999999999999999999999');
               .toArray();
             }
           else {
-            console.log('44444444444444444444444444444444444');
             result = await db
               .get()
               .collection(collection.PRODUCT_COLLECTION)
@@ -425,8 +379,4 @@ console.log('9999999999999999999999999999999999999999');
           resolve(result);
         });
       },
-
-
-
-
 }

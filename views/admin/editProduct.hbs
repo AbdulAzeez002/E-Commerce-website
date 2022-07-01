@@ -1,236 +1,227 @@
-<!-- Default form register -->
 <div class="container mt-5 col-xl-6">
-<form class="text-center border border-light p-5" action="/admin/editProduct/{{product._id}}" method="post" enctype="multipart/form-data">
+    <form class="text-center border border-light p-5" action="/admin/editProduct/{{product._id}}" method="post"
+        enctype="multipart/form-data">
 
-    <p class="h4 mb-4">Edit Prduct</p>
+        <p class="h4 mb-4">Edit Prduct</p>
 
-    <div class="form-row mb-4">
-        <div class="col">
-            <!--  name -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Product Name" name="productName" value="{{product.productName}}">
-        </div>
-        <div class="col">
-            <!-- brand name -->
-            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Brand" name="brand" value="{{product.brand}}">
-        </div>
-    </div>
+        <div class="form-row mb-4">
+            <div class="col">
 
-
-<div class="form-row mb-4">
-        <div class="col">
-            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="processor Type" name="processorType" value="{{product.processorType}}">
-            
-
-        </div>
-        <div class="col">
-            <!--  name -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Processor Name" name="processorName" value="{{product.processorName}}">
-        </div>
-    </div>
-
-
-    <div class="form-row mb-4">
-        <div class="col">
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Category" name="category" value="{{product.category}}">
-
-    
-    </div>
-        <div class="col">
-            <!-- price -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Screen Size" name="screenSize" value="{{product.screenSize}}" >
-        </div>
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Product Name"
+                    name="productName" value="{{product.productName}}">
+            </div>
+            <div class="col">
+                <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Brand"
+                    name="brand" value="{{product.brand}}">
+            </div>
         </div>
 
 
+        <div class="form-row mb-4">
+            <div class="col">
+                <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="processor Type"
+                    name="processorType" value="{{product.processorType}}">
 
 
-
-    <div class="form-row mb-4">
-        <div class="col">
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="storage Type" name="storageType" value="{{product.storageType}}">
-
-    </div>
-    <div class="col">
-            <!--  storage -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Storage Capacity" name="storageCapacity" value="{{product.storageCapacity}}">
+            </div>
+            <div class="col">
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Processor Name"
+                    name="processorName" value="{{product.processorName}}">
+            </div>
         </div>
-  </div>
+        <div class="form-row mb-4">
+            <div class="col">
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Category"
+                    name="category" value="{{product.category}}">
 
-  <div class="form-row mb-4">
-        <div class="col">
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="RAM" name="ram" value="{{product.ram}}">
-
-    </div>
-   <div class="col">
-            <!--  name -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Weight" name="weight" value="{{product.weight}}">
+            </div>
+            <div class="col">
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Screen Size"
+                    name="screenSize" value="{{product.screenSize}}">
+            </div>
         </div>
-  </div>
+        <div class="form-row mb-4">
+            <div class="col">
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="storage Type"
+                    name="storageType" value="{{product.storageType}}">
 
-  
-
-  <div class="form-row mb-4">
-        <div class="col">
-            <!-- price -->
-            <input type="number" id="defaultRegisterFormFirstName" class="form-control" placeholder="MRP" name="MRP" value="{{product.MRP}}">
+            </div>
+            <div class="col">
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Storage Capacity"
+                    name="storageCapacity" value="{{product.storageCapacity}}">
+            </div>
         </div>
-        <div class="col">
-            <!-- Color -->
-            <input type="number" id="defaultRegisterFormLastName" class="form-control" placeholder="Price" name="price" value="{{product.price}}">
+
+        <div class="form-row mb-4">
+            <div class="col">
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="RAM" name="ram"
+                    value="{{product.ram}}">
+
+            </div>
+            <div class="col">
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Weight"
+                    name="weight" value="{{product.weight}}">
+            </div>
         </div>
-    </div>
 
-<div class="form-row mb-4">
-        <div class="col">
-            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="operating System Type" name="operatingSystem" value="{{product.operatingSystem}}">
-
-    </div>
-        <div class="col">
-            <!-- sub category -->
-            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="operating System Name" name="operatingSystemName" value="{{product.operatingSystemName}}">
+        <div class="form-row mb-4">
+            <div class="col">
+                <input type="number" id="defaultRegisterFormFirstName" class="form-control" placeholder="MRP" name="MRP"
+                    value="{{product.MRP}}">
+            </div>
+            <div class="col">
+                <input type="number" id="defaultRegisterFormLastName" class="form-control" placeholder="Price"
+                    name="price" value="{{product.price}}">
+            </div>
         </div>
-    </div>
 
+        <div class="form-row mb-4">
+            <div class="col">
+                <input type="text" id="defaultRegisterFormLastName" class="form-control"
+                    placeholder="operating System Type" name="operatingSystem" value="{{product.operatingSystem}}">
 
-    <div class="form-row mb-4">
-        <div class="col">
-            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Warranty" name="warranty" value="{{product.warranty}}" >
-
-    </div>
-        <div class="col">
-            <!-- sub category -->
-            <input type="number" id="defaultRegisterFormLastName" class="form-control" placeholder="Quantity" name="stock" value="{{product.stock}}" >
+            </div>
+            <div class="col">
+                <input type="text" id="defaultRegisterFormLastName" class="form-control"
+                    placeholder="operating System Name" name="operatingSystemName"
+                    value="{{product.operatingSystemName}}">
+            </div>
         </div>
-    </div>
 
 
-    <div class="form-row mb-4">
-        <div class="col">
-            <!-- price -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Items in Sales Package" name="inBox" value="{{product.inBox}}" >
+        <div class="form-row mb-4">
+            <div class="col">
+                <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Warranty"
+                    name="warranty" value="{{product.warranty}}">
+
+            </div>
+            <div class="col">
+                <input type="number" id="defaultRegisterFormLastName" class="form-control" placeholder="Quantity"
+                    name="stock" value="{{product.stock}}">
+            </div>
         </div>
-        <div class="col">
-            <!-- Color -->
-            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Color" name="color" value="{{product.color}}">
+
+
+        <div class="form-row mb-4">
+            <div class="col">
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control"
+                    placeholder="Items in Sales Package" name="inBox" value="{{product.inBox}}">
+            </div>
+            <div class="col">
+                <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Color"
+                    name="color" value="{{product.color}}">
+            </div>
         </div>
-    </div>
 
-    <div class="form-row mb-4">
-        <div class="col">
-            <!-- price -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control"  placeholder="Suitable For" name="suitable" value="{{product.suitable}}">
+        <div class="form-row mb-4">
+            <div class="col">
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Suitable For"
+                    name="suitable" value="{{product.suitable}}">
+            </div>
+            <div class="col">
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control"
+                    placeholder="finger Print Sesnsor" name="fingerPrintSesnsor" value="{{product.fingerPrintSesnsor}}">
+
+            </div>
         </div>
-        <div class="col">
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="finger Print Sesnsor" name="fingerPrintSesnsor" value="{{product.fingerPrintSesnsor}}">
 
-    </div>
-    </div>
 
-    
 
-    <div class="form-row mb-4">
-        <div class="col">
-            <!-- price -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Battery" name="battery" value="{{product.battery}}">
+        <div class="form-row mb-4">
+            <div class="col">
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Battery"
+                    name="battery" value="{{product.battery}}">
+            </div>
+            <div class="col">
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Discount percent"
+                    name="discount" value="{{product.discount}}">
+            </div>
+
         </div>
-        <div class="col">
-            <!-- price -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Discount percent" name="discount" value="{{product.discount}}">
+
+
+
+
+        <div class="form-row mb-8">
+            <div class="col">
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Description"
+                    name="description1" value="{{product.description1}}">
+            </div>
+
         </div>
-         
-    </div>
+        <div class="form-row mb-8">
+            <div class="col">
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Description"
+                    name="description2" value="{{product.description2}}">
+            </div>
 
-
-
-
-  <div class="form-row mb-8">
-        <div class="col">
-            <!-- price -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Description" name="description1" value="{{product.description1}}">
         </div>
-        
-    </div>
-    <div class="form-row mb-8">
-        <div class="col">
-            <!-- price -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Description" name="description2" value="{{product.description2}}">
-        </div>
-        
-    </div>
-    <div class="form-row mb-8">
-        <div class="col">
-            <!-- price -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Additional Features" name="additionalFeatures" value="{{product.additionalFeatures}}">
-        </div>
-        
-    </div>
+        <div class="form-row mb-8">
+            <div class="col">
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control"
+                    placeholder="Additional Features" name="additionalFeatures" value="{{product.additionalFeatures}}">
+            </div>
 
-   
-
-
-    <div class="form-row mb-4">
-        <div class="col" >
-            <img src="/uploads/{{product.image.[0].image1}}" alt="" class="" style="width: 100px;" id="img1">
-            <!-- price -->
-            <input type="text" name="image1" value="{{product.image.[0].image1}}" style="display:none ;">
-            <input type="file" id="defaultRegisterFormFirstName" class="form-control" placeholder="image" name="image1" onchange="viewImage1(event)">
         </div>
-        <div class="col">
-            <!-- Color -->
-            <img src="/uploads/{{product.image.[1].image2}}" alt="" class="" style="width: 100px;" id="img2">
-            <input type="text" name="image2" value="{{product.image.[1].image2}}" style="display:none ;">
-            <input type="file" id="defaultRegisterFormLastName" class="form-control" placeholder="image" name="image2" onchange="viewImage2(event)" >
-        </div>
-    </div>
-    <div class="form-row mb-4">
-        <div class="col">
-            <!-- price -->
-            <img src="/uploads/{{product.image.[2].image3}}" alt="" class="" style="width: 100px;" id="img3" >
-            <input type="text" name="image3" value="{{product.image.[2].image3}}" style="display:none ;">
-            <input type="file" id="defaultRegisterFormFirstName" class="form-control" placeholder="image" name="image3" onchange="viewImage3(event)" >
-        </div>
-        <div class="col">
-            <!-- Color -->
-            <img src="/uploads/{{product.image.[3].image4}}" alt="" class="" style="width: 100px;" id="img4" >
-            <input type="text" name="image4" value="{{product.image.[3].image4}}" style="display:none ;">
-            <input type="file" id="defaultRegisterFormLastName" class="form-control" placeholder="image" name="image4" onchange="viewImage4(event)" >
-        </div>
-    </div>
+        <div class="form-row mb-4">
+            <div class="col">
+                <img src="/uploads/{{product.image.[0].image1}}" alt="" class="" style="width: 100px;" id="img1">
 
-    
-    <button class="btn btn-info my-4 " type="submit">Submit</button>
+                <input type="text" name="image1" value="{{product.image.[0].image1}}" style="display:none ;">
+                <input type="file" id="defaultRegisterFormFirstName" class="form-control" placeholder="image"
+                    name="image1" onchange="viewImage1(event)">
+            </div>
+            <div class="col">
+                <img src="/uploads/{{product.image.[1].image2}}" alt="" class="" style="width: 100px;" id="img2">
+                <input type="text" name="image2" value="{{product.image.[1].image2}}" style="display:none ;">
+                <input type="file" id="defaultRegisterFormLastName" class="form-control" placeholder="image"
+                    name="image2" onchange="viewImage2(event)">
+            </div>
+        </div>
+        <div class="form-row mb-4">
+            <div class="col">
+                <img src="/uploads/{{product.image.[2].image3}}" alt="" class="" style="width: 100px;" id="img3">
+                <input type="text" name="image3" value="{{product.image.[2].image3}}" style="display:none ;">
+                <input type="file" id="defaultRegisterFormFirstName" class="form-control" placeholder="image"
+                    name="image3" onchange="viewImage3(event)">
+            </div>
+            <div class="col">
+                <img src="/uploads/{{product.image.[3].image4}}" alt="" class="" style="width: 100px;" id="img4">
+                <input type="text" name="image4" value="{{product.image.[3].image4}}" style="display:none ;">
+                <input type="file" id="defaultRegisterFormLastName" class="form-control" placeholder="image"
+                    name="image4" onchange="viewImage4(event)">
+            </div>
+        </div>
 
-   
 
-</form>
+        <button class="btn btn-info my-4 " type="submit">Submit</button>
+
+
+
+    </form>
 </div>
-<!-- Default form register -->
+
 
 <script>
-    function viewImage1(event){
-    document.getElementById('img1').src=URL.createObjectURL(event.target.files[0])
+    function viewImage1(event) {
+        document.getElementById('img1').src = URL.createObjectURL(event.target.files[0])
     }
 </script>
 
 <script>
-function viewImage2(event){
-    document.getElementById('img2').src=URL.createObjectURL(event.target.files[0])
+    function viewImage2(event) {
+        document.getElementById('img2').src = URL.createObjectURL(event.target.files[0])
     }
 </script>
-    
+
 <script>
-function viewImage3(event){
-    document.getElementById('img3').src=URL.createObjectURL(event.target.files[0])
+    function viewImage3(event) {
+        document.getElementById('img3').src = URL.createObjectURL(event.target.files[0])
     }
 
 </script>
 <script>
-function viewImage4(event){
-    document.getElementById('img4').src=URL.createObjectURL(event.target.files[0])
+    function viewImage4(event) {
+        document.getElementById('img4').src = URL.createObjectURL(event.target.files[0])
     }
 </script>
-    
-    
-
-
-   

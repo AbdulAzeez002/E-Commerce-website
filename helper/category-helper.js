@@ -1,163 +1,83 @@
-const db=require('../config/connection')
-const collection=require('../config/collections')
+const db = require('../config/connection')
+const collection = require('../config/collections')
 const { use } = require('../routes/user')
-const objectId=require('mongodb').ObjectId
+const objectId = require('mongodb').ObjectId
 
 
-module.exports={
+module.exports = {
 
-    addCategory:(data)=>{
-        return new Promise((resolve,reject)=>{
-            db.get().collection(collection.CATEGORY_COLLECTION).insertOne(data).then((response)=>{
+    addCategory: (data) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.CATEGORY_COLLECTION).insertOne(data).then((response) => {
                 console.log(response);
                 resolve(response)
             })
         })
     },
 
-    getCategory:()=>{
-        return new Promise(async(resolve,reject)=>{
-            let category=await db.get().collection(collection.CATEGORY_COLLECTION).find().toArray()
-           
+    getCategory: () => {
+        return new Promise(async (resolve, reject) => {
+            let category = await db.get().collection(collection.CATEGORY_COLLECTION).find().toArray()
+
             resolve(category)
         })
     },
-    deleteCategory:(id)=>{
-        return new Promise((resolve,reject)=>{
-            db.get().collection(collection.CATEGORY_COLLECTION).remove({_id:objectId(id)}).then((response)=>{
+    deleteCategory: (id) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.CATEGORY_COLLECTION).remove({ _id: objectId(id) }).then((response) => {
                 resolve(response)
             })
         })
     },
 
-    addBrand:(data)=>{
-        
-        return new Promise((resolve,reject)=>{
-            db.get().collection(collection.BRAND_COLLECTION).insertOne(data).then((response)=>{
+    addBrand: (data) => {
+
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.BRAND_COLLECTION).insertOne(data).then((response) => {
                 console.log(response);
                 resolve(response)
             })
         })
     },
-    editBrand:(data)=>{
-        
-        return new Promise((resolve,reject)=>{
-            db.get().collection(collection.BRAND_COLLECTION).updateOne({_id:objectId(data.id)},
-            {
-                $set:{brandName:data.brandName,
-                logo:data.logo}
-            }).then((response)=>{
-                console.log(response);
-                resolve(response)
-            })
+    editBrand: (data) => {
+
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.BRAND_COLLECTION).updateOne({ _id: objectId(data.id) },
+                {
+                    $set: {
+                        brandName: data.brandName,
+                        logo: data.logo
+                    }
+                }).then((response) => {
+                    console.log(response);
+                    resolve(response)
+                })
         })
     },
 
+    getBrand: () => {
+        return new Promise(async (resolve, reject) => {
+            let brand = await db.get().collection(collection.BRAND_COLLECTION).find().toArray()
 
-
-    getBrand:()=>{
-        return new Promise(async(resolve,reject)=>{
-            let brand=await db.get().collection(collection.BRAND_COLLECTION).find().toArray()
-            // console.log(category);
             resolve(brand)
         })
     },
 
-    getOneBrand:(id)=>{
+    getOneBrand: (id) => {
 
-        return new Promise((resolve,reject)=>{
-            db.get().collection(collection.BRAND_COLLECTION).findOne({_id:objectId(id)}).then((response)=>{
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.BRAND_COLLECTION).findOne({ _id: objectId(id) }).then((response) => {
                 resolve(response)
             })
         })
 
     },
-    deleteBrand:(id)=>{
-        return new Promise((resolve,reject)=>{
-            db.get().collection(collection.BRAND_COLLECTION).remove({_id:objectId(id)}).then((response)=>{
+    deleteBrand: (id) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.BRAND_COLLECTION).remove({ _id: objectId(id) }).then((response) => {
                 resolve(response)
             })
         })
     },
-
-    searchFilter :(brandFilter,categoryFilter,price) => {
-        console.log('111111111111111111111111111111111111111111111');
-        console.log('reached search filter');
-       
-        return new Promise(async (resolve, reject) => {
-            let result
-
-            if(brandFilter.length>0 && categoryFilter.length>0  ){
-                console.log('11111111111111111111111111111111111111111');
-                 result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
-                    {
-                        $match:{$and:[{$or:brandFilter},{$or:categoryFilter},{price:{$lt:price}}]}
-                        
-                    },
-
-                    // {
-                    //     $match:{$or:categoryFilter}
-                        
-                    // },
-                    // {
-                    //     $match:{price:{$lt:price}}
-                    // }
-                ]).toArray()
-                console.log(result);
-            } 
-
-            else if(brandFilter.length>0 && categoryFilter.length==0  ){
-                console.log('222222222222222222222222222222222222222222');
- 
-                result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
-                    {
-                        $match:{$and:[{$or:brandFilter},{price:{$lt:price}}]}
-                        
-                    },
-                    // {
-                    //     $match:{price:{$lt:price}}
-                    // }
-                ]).toArray()
-                console.log(result);
-
-
-            }
-            else if(brandFilter.length==0 && categoryFilter.length>0 ){
-            console.log('333333333333333333333333333333333333333333333333333333333333333');
-            result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
-               
-                {
-                    $match:{$and:[{$or:categoryFilter},{price:{$lt:price}}]}
-                    
-                },
-                // {
-                //     $match:{price:{$lt:price}}
-                // }
-            ]).toArray()
-            console.log(result);
-
-        }
-            else{
-                console.log('44444444444444444444444444444444444444444444444444444444444444');
-                 result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
-                    
-                    {
-                        $match:{price:{$lt:price}}
-                    }
-                ]).toArray()
-                console.log(result);
-            }
-            
-            resolve(result)
-            console.log(result);
-        })
-      },
-    
-    
-
-
-
-
-
 
 }
