@@ -81,11 +81,13 @@ module.exports={
     },
 
     searchFilter :(brandFilter,categoryFilter,price) => {
+        console.log('reached search filter');
        
         return new Promise(async (resolve, reject) => {
             let result
 
             if(brandFilter.length>0 && categoryFilter.length>0  ){
+                console.log('11111111111111111111111111111111111111111');
                  result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
                     {
                         $match:{$and:[{$or:brandFilter},{$or:categoryFilter},{price:{$lt:price}}]}
@@ -100,9 +102,11 @@ module.exports={
                     //     $match:{price:{$lt:price}}
                     // }
                 ]).toArray()
+                console.log(result);
             } 
 
             else if(brandFilter.length>0 && categoryFilter.length==0  ){
+                console.log('222222222222222222222222222222222222222222');
  
                 result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
                     {
@@ -113,10 +117,12 @@ module.exports={
                     //     $match:{price:{$lt:price}}
                     // }
                 ]).toArray()
+                console.log(result);
 
 
             }
-            else if(brandFilter.length==0 && categoryFilter.length>0 )
+            else if(brandFilter.length==0 && categoryFilter.length>0 ){
+            console.log('333333333333333333333333333333333333333333333333333333333333333');
             result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
                
                 {
@@ -127,18 +133,22 @@ module.exports={
                 //     $match:{price:{$lt:price}}
                 // }
             ]).toArray()
+            console.log(result);
 
-        
+        }
             else{
+                console.log('44444444444444444444444444444444444444444444444444444444444444');
                  result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
                     
                     {
                         $match:{price:{$lt:price}}
                     }
                 ]).toArray()
+                console.log(result);
             }
             
             resolve(result)
+            console.log(result);
         })
       },
     
