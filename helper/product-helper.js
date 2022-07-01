@@ -355,7 +355,76 @@ console.log('9999999999999999999999999999999999999999');
 
         })
 
-    }
+    },
+    searchFilter: (brandFilter, cateFilter, price) => {
+        return new Promise(async (resolve, reject) => {
+            console.log('5555555555555555555555555555555555555555');
+          let result;
+          console.log(brandFilter);
+          console.log(cateFilter);
+          console.log(price);
+          if (brandFilter.length > 0 && cateFilter.length > 0) {
+            console.log('1111111111111111111');
+            result = await db
+              .get()
+              .collection(collection.PRODUCT_COLLECTION)
+              .aggregate([
+                {
+                  $match: { $or: brandFilter },
+                },
+                {
+                  $match: { $or: cateFilter },
+                },
+                {
+                  $match: { price: { $lt: price } },
+                },
+              ])
+              .toArray();
+          } else if (brandFilter.length > 0 && cateFilter.length == 0) {
+            console.log('2222222222222222222222');
+            result = await db
+              .get()
+              .collection(collection.PRODUCT_COLLECTION)
+              .aggregate([
+                {
+                  $match: { $or: brandFilter },
+                },
+                {
+                  $match: { price: { $lt: price } },
+                },
+              ])
+              .toArray();
+          } else if (brandFilter.length == 0 && cateFilter.length > 0){
+          console.log('333333333333333333333333333');
+            result = await db
+              .get()
+              .collection(collection.PRODUCT_COLLECTION)
+              .aggregate([
+                {
+                  $match: { $or: cateFilter },
+                },
+                {
+                  $match: { price: { $lt: price } },
+                },
+              ])
+              .toArray();
+            }
+          else {
+            console.log('44444444444444444444444444444444444');
+            result = await db
+              .get()
+              .collection(collection.PRODUCT_COLLECTION)
+              .aggregate([
+                {
+                  $match: { price: { $lt: price } },
+                },
+              ])
+              .toArray();
+          }
+          console.log(result);
+          resolve(result);
+        });
+      },
 
 
 

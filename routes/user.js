@@ -743,33 +743,55 @@ router.get('/brand/:id', (req, res) => {
 })
 
 
-router.post('/search-filter', (req, res) => {
-  console.log('88888888888888888888888888888888888888888888888888888888888888888');
-  // console.log(req.body);
+// router.post('/search-filter', (req, res) => {
+//   console.log('88888888888888888888888888888888888888888888888888888888888888888');
+//   // console.log(req.body);
  
-  let a = req.body
-  let price = parseInt(a.Prize)
-  let brandFilter = []
-  let categoryFilter = []
+//   let a = req.body
+//   let price = parseInt(a.Prize)
+//   let brandFilter = []
+//   let categoryFilter = []
 
-  console.log('9999999999999999999999999999988888888888888888888888888888888888888888888888888888888888888888');
-  for (let i of a.brand) {
+//   console.log('9999999999999999999999999999988888888888888888888888888888888888888888888888888888888888888888');
+//   for (let i of a.brand) {
+//     brandFilter.push({ 'brand': i })
+//   }
+//   console.log('pppppppppppppppppppppppppppppppppppppppppppppppppppppppppp');
+//   for (let i of a.category) {
+//     categoryFilter.push({ 'category': i })
+//   }
+//   console.log('777777777777777777777777777777777777777777777777777777777777777777777');
+//   categoryHelper.searchFilter(brandFilter, categoryFilter, price).then((result) => {
+//     // console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
+//     filterResult = result
+
+//     // console.log(result);
+//     // console.log(filterResult);
+//     res.json({ status: true })
+//   })
+
+// })
+
+router.post('/search-filter', (req, res) => {
+  console.log(req.body);
+  let data = req.body
+  console.log(data.Prize);
+
+  let price = parseInt(data.Prize)
+  console.log(price);
+  let brandFilter = []
+  let cateFilter=[]
+  for (let i of data.brand) {
     brandFilter.push({ 'brand': i })
   }
-  console.log('pppppppppppppppppppppppppppppppppppppppppppppppppppppppppp');
-  for (let i of a.category) {
-    categoryFilter.push({ 'category': i })
+  for (let i of data.category) {
+    cateFilter.push({ 'category': i })
   }
-  console.log('777777777777777777777777777777777777777777777777777777777777777777777');
-  categoryHelper.searchFilter(brandFilter, categoryFilter, price).then((result) => {
-    // console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
+  productHelpers.searchFilter(brandFilter,cateFilter, price).then((result) => {
     filterResult = result
-
-    // console.log(result);
-    // console.log(filterResult);
     res.json({ status: true })
   })
-
+ 
 })
 
 router.get('/shop', (req, res) => {
