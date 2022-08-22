@@ -33,11 +33,11 @@
                                 onblur="this.placeholder = 'Mobile'">
                         </div>
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="password" name="password" placeholder="Password"
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password"
                                 required="true" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
                         </div>
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="password2" name="newpassword"
+                            <input type="password" class="form-control" id="password2" name="newpassword"
                                 placeholder="Confirm Password" onfocus="this.placeholder = ''"
                                 onblur="this.placeholder = 'Confirm Password'">
                         </div>
@@ -116,11 +116,7 @@
                 }
             }
         })
-        $.validator.addMethod("namevalidation", function (value, element) {
-            return /^[A-Za-z]+$/.test(value);
-        },
-            "Sorry,only alphabets are allowed"
-        );
+        
 
 
 
