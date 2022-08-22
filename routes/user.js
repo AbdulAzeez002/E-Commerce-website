@@ -742,13 +742,42 @@ router.get('/brand/:id', (req, res) => {
 
 })
 
-router.get('/shop', async (req, res) => {
+router.post('/search-filter', (req, res) => {
+  console.log(req.body);
+  let a = req.body
+  let price = parseInt(a.Prize)
+  let brandFilter = []
+  let categoryFilter = []
+ 
+  for (let i of a.brand) {
+    brandFilter.push({ 'brand': i })
+  }
+  for (let i of a.category) {
+    categoryFilter.push({ 'category': i })
+  }
+  categoryHelper.searchFilter(brandFilter, categoryFilter, price).then((result) => {
+    filterResult = result
 
+    res.json({ status: true })
+  })
 
+})
+
+//newly added
+
+router.get('/shop', (req, res) => {
+  productHelpers.getAllProducts().then(async (products) => {
+    filterResult = products
+
+    res.redirect('/filterPage')
+  })
+
+})
+
+router.get('/filterPage', async (req, res) => {
 
   let cartCount = ''
   let wishlistCount = ''
-  let products = await productHelpers.getAllProducts()
 
   user = req.session.user
   if (user) {
@@ -760,9 +789,31 @@ router.get('/shop', async (req, res) => {
 
   let category = await categoryHelper.getCategory()
   let brand = await categoryHelper.getBrand()
-  res.render('user/allProducts', { products, category, brand, cartCount, wishlistCount, user })
+  res.render('user/filterPage', { filterResult, category, brand, cartCount, wishlistCount, user })
 
 })
+
+// router.get('/shop', async (req, res) => {
+
+
+
+//   let cartCount = ''
+//   let wishlistCount = ''
+//   let products = await productHelpers.getAllProducts()
+
+//   user = req.session.user
+//   if (user) {
+//     [cartCount, wishlistCount] = await Promise.all([
+//       cartHelpers.getCartCount(req.session.user._id), cartHelpers.getWishlistCount(req.session.user._id)
+//     ])
+
+//   }
+
+//   let category = await categoryHelper.getCategory()
+//   let brand = await categoryHelper.getBrand()
+//   res.render('user/allProducts', { products, category, brand, cartCount, wishlistCount, user })
+
+// })
 
 // category starts
 

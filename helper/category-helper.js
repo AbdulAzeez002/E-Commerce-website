@@ -80,4 +80,67 @@ module.exports = {
         })
     },
 
+    
+    searchFilter :(brandFilter,categoryFilter,price) => {
+       
+        return new Promise(async (resolve, reject) => {
+            let result
+
+            if(brandFilter.length>0 && categoryFilter.length>0  ){
+                 result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
+                    {
+                        $match:{$or:brandFilter}
+                        
+                    },
+
+                    {
+                        $match:{$or:categoryFilter}
+                        
+                    },
+                    {
+                        $match:{price:{$lt:price}}
+                    }
+                ]).toArray()
+            } 
+
+            else if(brandFilter.length>0 && categoryFilter.length==0  ){
+ 
+                result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
+                    {
+                        $match:{$or:brandFilter}
+                        
+                    },
+                    {
+                        $match:{price:{$lt:price}}
+                    }
+                ]).toArray()
+
+
+            }
+            else if(brandFilter.length==0 && categoryFilter.length>0 )
+            result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
+               
+                {
+                    $match:{$or:categoryFilter}
+                    
+                },
+                {
+                    $match:{price:{$lt:price}}
+                }
+            ]).toArray()
+
+        
+            else{
+                 result = await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
+                    
+                    {
+                        $match:{price:{$lt:price}}
+                    }
+                ]).toArray()
+            }
+            
+            resolve(result)
+        })
+      }
+
 }
