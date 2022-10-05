@@ -17,6 +17,8 @@ NOTE: Please read the RUN section before opening an issue.
 
 ## Demo
 
+![screenshot](lapstore1.jpg)
+
 The application is deployed to AWS and can be accessed through the following link:
 
 [lapstore.live on AWS](https://lapstore.live/)
